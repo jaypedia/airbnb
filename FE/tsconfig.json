@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    /* Basic Options */
+    "target": "ES5",
+    "module": "commonjs",
+    "outDir": "dist",
+    "lib": ["DOM", "ESNEXT", "DOM.Iterable"],
+    "jsx": "react",
+    "allowJs": true,
+    "checkJs": true,
+    "removeComments": true,
+    "sourceMap": true,
+
+    /* Module Resolution Options */
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+
+    /* Strict Type-Checking Options */
+    "strict": true,
+    "alwaysStrict": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true
+  },
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}
