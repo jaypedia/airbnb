@@ -5,7 +5,7 @@
     "module": "commonjs",
     "outDir": "dist",
     "lib": ["DOM", "ESNEXT", "DOM.Iterable"],
-    "jsx": "react",
+    "jsx": "react-jsx",
     "allowJs": true,
     "checkJs": true,
     "removeComments": true,
