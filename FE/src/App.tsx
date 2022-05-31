@@ -7,13 +7,13 @@ import NotFound from '@/pages/NotFound';
 
 const App = () => {
   return (
-    <Router basename="airbnb">
+    <Router basename={BASE_NAME}>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<MainContents />} />
           <Route path="search-result" element={<SearchResult />} />
-          <Route path="*" element={<NotFound />} />
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );
