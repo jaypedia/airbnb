@@ -5,7 +5,7 @@
   "main": "index.tsx",
   "scripts": {
     "start": "webpack serve",
-    "build": "webpack",
+    "build": "webpack --env prod",
     "json-server": "json-server --watch db.json",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
