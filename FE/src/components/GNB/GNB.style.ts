@@ -26,6 +26,33 @@ const NavWrapper = styled.div`
 
 const NavItem = styled.li`
   color: ${({ theme: { color } }) => color.grey1};
+  cursor: pointer;
+
+  :hover {
+    color: ${({ theme: { color } }) => color.black};
+    text-decoration: underline;
+    font-weight: ${({ theme: { fontWeight } }) => fontWeight.bold};
+  }
 `;
 
-export { LogoText, GNBWrapper, NavWrapper, NavItem };
+const ProfileWrapper = styled.div`
+  ${mixins.flexBox({ justifyContent: 'space-between' })};
+  width: 76px;
+  height: 40px;
+  background-color: ${({ theme: { color } }) => color.white};
+  padding: 4px;
+  border: 1px solid ${({ theme: { color } }) => color.grey4};
+  border-radius: 30px;
+  cursor: pointer;
+`;
+
+const ProfileImgCircle = styled.div`
+  ${mixins.flexBox({ justifyContent: 'center' })};
+  width: 32px;
+  height: 32px;
+  background-color: ${({ theme: { color } }) => color.grey3};
+  border-radius: 50%;
+  padding: 5px;
+`;
+
+export { LogoText, GNBWrapper, NavWrapper, NavItem, ProfileWrapper, ProfileImgCircle };
