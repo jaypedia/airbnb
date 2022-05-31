@@ -7,7 +7,7 @@ import NotFound from '@/pages/NotFound';
 
 const App = () => {
   return (
-    <Router>
+    <Router basename="airbnb">
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<MainContents />} />
