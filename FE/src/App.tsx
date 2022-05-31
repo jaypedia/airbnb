@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Layout from '@/layout';
-import Home from '@/pages/Home';
+import MainContents from '@/pages/MainContents';
 import SearchResult from '@/pages/SearchResult';
 import NotFound from '@/pages/NotFound';
 
@@ -10,7 +10,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
+          <Route index element={<MainContents />} />
           <Route path="search-result" element={<SearchResult />} />
           <Route path="*" element={<NotFound />} />
         </Route>
