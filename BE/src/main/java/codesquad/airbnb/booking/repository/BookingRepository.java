@@ -2,23 +2,8 @@ package codesquad.airbnb.booking.repository;
 
 
 import codesquad.airbnb.booking.domain.Booking;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import javax.persistence.EntityManager;
-import java.util.Optional;
+public interface BookingRepository extends JpaRepository<Booking, Long> {
 
-@Repository
-@RequiredArgsConstructor
-public class BookingRepository {
-
-    private final EntityManager em;
-
-    public void save(Booking booking) {
-        em.persist(booking);
-    }
-
-    public Optional<Booking> findById(Long id) {
-        return Optional.ofNullable(em.find(Booking.class, id));
-    }
 }
