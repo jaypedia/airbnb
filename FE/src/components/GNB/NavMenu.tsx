@@ -1,4 +1,3 @@
-import { NavLink } from 'react-router-dom';
 import * as S from './GNB.style';
 
 const NavMenu = () => {

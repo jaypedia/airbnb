@@ -17,6 +17,7 @@ const gnbPadding = {
 const GNBWrapper = styled.div`
   ${mixins.flexBox({ justifyContent: 'space-between' })};
   padding: ${({ path }) => gnbPadding[path]};
+  height: 94px;
 `;
 
 const NavWrapper = styled.div`
