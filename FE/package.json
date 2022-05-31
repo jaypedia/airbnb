@@ -5,7 +5,10 @@
   "main": "index.tsx",
   "scripts": {
     "start": "webpack serve",
-    "build": "webpack"
+    "build": "webpack",
+    "json-server": "json-server --watch db.json",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -18,8 +21,10 @@
   },
   "homepage": "https://github.com/jaypedia/airbnb#readme",
   "dependencies": {
+    "axios": "^0.27.2",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-icons": "^4.4.0",
     "react-router-dom": "^6.3.0",
     "styled-components": "^5.3.5"
   },
@@ -51,7 +56,9 @@
     "eslint-plugin-react": "^7.30.0",
     "eslint-plugin-react-hooks": "^4.5.0",
     "file-loader": "^6.2.0",
+    "gh-pages": "^4.0.0",
     "html-webpack-plugin": "^5.5.0",
+    "json-server": "^0.17.0",
     "prettier": "^2.6.2",
     "react-refresh": "^0.13.0",
     "style-loader": "^3.3.1",

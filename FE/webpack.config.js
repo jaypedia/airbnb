@@ -1,6 +1,8 @@
 const path = require('path');
+
 const PORT = 9000;
 const webpack = require('webpack');
+
 const mode = process.env.NODE_ENV || 'development';
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
