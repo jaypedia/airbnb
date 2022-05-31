@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+
 import Normalize from '@/styles/Normalize';
 
 const GlobalStyle = createGlobalStyle`
@@ -24,7 +25,9 @@ textarea {
 
 a,
 button {
-  cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
 }
 
 ul, li {

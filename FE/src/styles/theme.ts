@@ -21,7 +21,14 @@ const fontSize = {
   xxLarge: '32px',
 };
 
+const fontWeight = {
+  logo: 900,
+  bold: 700,
+  regular: 400,
+};
+
 export const theme = {
   color,
   fontSize,
+  fontWeight,
 };
