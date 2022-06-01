@@ -1,11 +1,12 @@
-import { FiUser, FiMenu, FiSearch } from 'react-icons/fi';
+import { FiMenu, FiSearch } from 'react-icons/fi';
+import { FaAirbnb, FaUserCircle } from 'react-icons/fa';
 import { MdCancel } from 'react-icons/md';
 import styled from 'styled-components';
 
-const User = styled(FiUser)`
-  color: ${({ theme: { color } }) => color.white};
-  width: 20px;
-  height: 20px;
+const User = styled(FaUserCircle)`
+  color: ${({ theme: { color } }) => color.grey3};
+  width: 32px;
+  height: 32px;
 `;
 
 const Menu = styled(FiMenu)`
@@ -25,8 +26,14 @@ const Cancel = styled(MdCancel)`
   color: ${({ theme: { color } }) => color.grey4};
   position: absolute;
   top: 50%;
-  right: ${({ isSearchBox }) => (isSearchBox ? '125px' : '25px')};
+  right: ${({ $isSearchBox }) => ($isSearchBox ? '125px' : '15px')};
   transform: translateY(-50%);
 `;
 
-export { User, Menu, Search, Cancel };
+const Airbnb = styled(FaAirbnb)`
+  width: 40px;
+  height: 40px;
+  color: ${({ theme: { color } }) => color.pink};
+`;
+
+export { User, Menu, Search, Cancel, Airbnb };
