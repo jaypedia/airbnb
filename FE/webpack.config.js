@@ -66,7 +66,10 @@ module.exports = env => {
     },
 
     plugins: [
-      new HtmlWebpackPlugin({ template: path.join(__dirname, 'public', 'index.html') }),
+      new HtmlWebpackPlugin({
+        template: path.join(__dirname, 'public', 'index.html'),
+        favicon: path.join(__dirname, 'src', 'assets', 'favicon.png'),
+      }),
       new ReactRefreshWebpackPlugin(),
       new webpack.ProgressPlugin(),
       new webpack.ProvidePlugin({ React: 'react' }),
