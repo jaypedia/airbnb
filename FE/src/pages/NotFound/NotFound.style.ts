@@ -1,6 +1,7 @@
-import { mixins } from '@/styles/mixins';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+
+import { mixins } from '@/styles/mixins';
 
 const NotFoundWrapper = styled.div`
   ${mixins.flexBox({ direction: 'column' })}

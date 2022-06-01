@@ -1,40 +1,26 @@
-import * as S from './SearchBar.style';
-import * as I from '@/styles/icons';
+import searchBarText from '@/constants/searchBarText';
 
-const SearchBar = ({ path }) => {
+import * as S from './SearchBar.style';
+import SearchButton from './SearchButton';
+import SearchInput from './SearchInput';
+
+const SearchBar = ({ currentStyle }) => {
+  const checkLastElement = (index: number) => {
+    return searchBarText.length === index + 1;
+  };
+
   return (
-    <S.SearchBarWrapper path={path}>
-      <S.DateBox>
-        <S.SearchTitleContentWrapper>
-          <S.SearchTitle>체크인</S.SearchTitle>
-          <S.SearchContent>날짜 입력</S.SearchContent>
-        </S.SearchTitleContentWrapper>
-        <S.SearchTitleContentWrapper>
-          <S.SearchTitle>체크아웃</S.SearchTitle>
-          <S.SearchContent>날짜 입력</S.SearchContent>
-        </S.SearchTitleContentWrapper>
-        <I.Cancel />
-      </S.DateBox>
-      <S.Divider />
-      <S.PriceBox>
-        <S.SearchTitleContentWrapper>
-          <S.SearchTitle>요금</S.SearchTitle>
-          <S.SearchContent>금액대 설정</S.SearchContent>
-          <I.Cancel />
-        </S.SearchTitleContentWrapper>
-      </S.PriceBox>
-      <S.Divider />
-      <S.SearchBox>
-        <S.SearchTitleContentWrapper>
-          <S.SearchTitle>인원</S.SearchTitle>
-          <S.SearchContent>게스트 추가</S.SearchContent>
-          <I.Cancel isSearchBox />
-        </S.SearchTitleContentWrapper>
-        <S.SearchButton to="/search-result">
-          <I.Search />
-        </S.SearchButton>
-      </S.SearchBox>
-    </S.SearchBarWrapper>
+    <S.SearchBarForm currentStyle={currentStyle}>
+      {searchBarText.map(({ id, title, placeholder }, index) => (
+        <SearchInput
+          key={id}
+          title={title}
+          placeholder={placeholder}
+          isLast={checkLastElement(index)}
+        />
+      ))}
+      <SearchButton />
+    </S.SearchBarForm>
   );
 };
 

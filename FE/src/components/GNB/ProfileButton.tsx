@@ -1,14 +1,13 @@
-import * as S from './GNB.style';
 import * as I from '@/styles/icons';
+
+import * as S from './GNB.style';
 
 const ProfileButton = () => {
   return (
-    <S.ProfileWrapper>
+    <S.ProfileButton>
       <I.Menu />
-      <S.ProfileImgCircle>
-        <I.User />
-      </S.ProfileImgCircle>
-    </S.ProfileWrapper>
+      <I.User />
+    </S.ProfileButton>
   );
 };
 
