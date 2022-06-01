@@ -16,13 +16,13 @@ const LogoText = styled.h1`
 `;
 
 const gnbPadding = {
-  '/': '0 80px',
-  '/search-result': '0 24px',
+  main: '0 80px',
+  searchResult: '0 24px',
 };
 
 const GNBWrapper = styled.div`
   ${mixins.flexBox({ justifyContent: 'space-between' })};
-  padding: ${({ path }) => gnbPadding[path]};
+  padding: ${({ currentStyle }) => gnbPadding[currentStyle]};
   height: 94px;
 `;
 

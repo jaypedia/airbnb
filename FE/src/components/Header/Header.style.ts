@@ -1,25 +1,26 @@
 import styled from 'styled-components';
 import heroImg from '@/assets/hero-img.png';
+import { shadow } from '@/styles/commonStyle';
 
-const headerHome = `
+const main = `
   background: url(${heroImg}) no-repeat;
   background-size: cover;
   height: 70vh;
 `;
 
-const headerSearch = `
+const searchResult = `
   background-color: white;
   height: 94px;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  ${shadow}
 `;
 
 const headerStyle = {
-  '/': headerHome,
-  '/search-result': headerSearch,
+  main,
+  searchResult,
 };
 
 const HeaderWrapper = styled.div`
-  ${({ path }) => headerStyle[path]}
+  ${({ currentStyle }) => headerStyle[currentStyle]}
 `;
 
 export { HeaderWrapper };

@@ -1,9 +1,9 @@
 import * as S from './SearchBar.style';
 import * as I from '@/styles/icons';
 
-const SearchBar = ({ path }) => {
+const SearchBar = ({ currentStyle }) => {
   return (
-    <S.SearchBarWrapper path={path}>
+    <S.SearchBarWrapper currentStyle={currentStyle}>
       <S.DateBox>
         <S.SearchTitleContentWrapper>
           <S.SearchTitle>체크인</S.SearchTitle>

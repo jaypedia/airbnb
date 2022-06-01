@@ -6,10 +6,15 @@ import * as S from './Header.style';
 const Header = () => {
   const { pathname } = useLocation();
 
+  const currentStyle = {
+    '/': 'main',
+    '/search-result': 'searchResult',
+  };
+
   return (
-    <S.HeaderWrapper path={pathname}>
-      <GNB path={pathname} />
-      <SearchBar path={pathname} />
+    <S.HeaderWrapper currentStyle={currentStyle[pathname]}>
+      <GNB currentStyle={currentStyle[pathname]} />
+      <SearchBar currentStyle={currentStyle[pathname]} />
     </S.HeaderWrapper>
   );
 };

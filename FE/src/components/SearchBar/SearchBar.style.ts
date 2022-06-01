@@ -4,6 +4,11 @@ import { mixins } from '@/styles/mixins';
 import { theme } from '@/styles/theme';
 import { Link } from 'react-router-dom';
 
+const searchBarTopLocation = {
+  main: '110px',
+  searchResult: '22px',
+};
+
 const SearchBarWrapper = styled.div`
   ${mixins.flexBox({ justifyContent: 'space-between' })};
   background-color: ${({ theme: { color } }) => color.white};
@@ -12,7 +17,7 @@ const SearchBarWrapper = styled.div`
   height: 76px;
   left: 50%;
   transform: translateX(-50%);
-  top: ${({ path }) => (path === '/' ? '110px' : '22px')};
+  top: ${({ currentStyle }) => searchBarTopLocation[currentStyle]};
   border: 1px solid ${({ theme: { color } }) => color.grey4};
   border-radius: 60px;
 `;

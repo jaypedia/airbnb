@@ -3,10 +3,10 @@ import Logo from './Logo';
 import NavMenu from './NavMenu';
 import ProfileButton from './ProfileButton';
 
-const GNB = ({ path }) => {
+const GNB = ({ currentStyle }) => {
   return (
     <>
-      <S.GNBWrapper path={path}>
+      <S.GNBWrapper currentStyle={currentStyle}>
         <Logo />
         <NavMenu />
         <ProfileButton />
