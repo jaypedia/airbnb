@@ -73,7 +73,7 @@ const SearchBarBoxStyle = `
 const DateBox = styled.div`
   ${SearchBarBoxStyle}
   ${mixins.flexBox({ justifyContent: 'center' })};
-  width: 360px;
+  width: 180px;
   padding-left: 40px;
 `;
 

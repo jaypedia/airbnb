@@ -8,12 +8,16 @@ const SearchBar = ({ currentStyle }) => {
         <S.SearchTitleContentWrapper>
           <S.SearchTitle>체크인</S.SearchTitle>
           <S.SearchContent>날짜 입력</S.SearchContent>
+          <I.Cancel />
         </S.SearchTitleContentWrapper>
+      </S.DateBox>
+      <S.Divider />
+      <S.DateBox>
         <S.SearchTitleContentWrapper>
           <S.SearchTitle>체크아웃</S.SearchTitle>
           <S.SearchContent>날짜 입력</S.SearchContent>
+          <I.Cancel />
         </S.SearchTitleContentWrapper>
-        <I.Cancel />
       </S.DateBox>
       <S.Divider />
       <S.PriceBox>
@@ -28,7 +32,7 @@ const SearchBar = ({ currentStyle }) => {
         <S.SearchTitleContentWrapper>
           <S.SearchTitle>인원</S.SearchTitle>
           <S.SearchContent>게스트 추가</S.SearchContent>
-          <I.Cancel isSearchBox />
+          <I.Cancel $isSearchBox />
         </S.SearchTitleContentWrapper>
         <S.SearchButton to="/search-result">
           <I.Search />
