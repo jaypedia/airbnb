@@ -1,7 +1,8 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { mixins } from '@/styles/mixins';
 import { shadow } from '@/styles/commonStyle';
+import { mixins } from '@/styles/mixins';
 
 const LogoWrapper = styled.div`
   ${mixins.flexBox({ justifyContent: 'space-between' })};
@@ -31,7 +32,7 @@ const NavWrapper = styled.div`
   width: 186px;
 `;
 
-const NavItem = styled.li`
+const NavItem = styled(Link)`
   color: ${({ theme: { color } }) => color.grey1};
   cursor: pointer;
 
