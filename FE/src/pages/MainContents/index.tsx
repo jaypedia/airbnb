@@ -1,33 +1,20 @@
 import { useState, useEffect } from 'react';
 import mainContentsData from '@/api/mainContents';
+import updateData from '@/util/updateData';
 
 const MainContent = () => {
   const [nearDestData, setNearDestData] = useState(null);
   const [recommendablePlaceData, setRecommendablePlaceData] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  //TODO: data fetch 함수 util로 통합
-  const getNearDestData = async () => {
-    try {
-      const response = await mainContentsData.getNearDestData();
-      setNearDestData(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const getRecommendablePlaceData = async () => {
-    try {
-      const response = await mainContentsData.getRecommendablePlaceData();
-      setRecommendablePlaceData(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const [nearDestDataLoading, setNearDestDataLoading] = useState(false);
+  const [recommendablePlaceDataLoading, setRecommendablePlaceDataLoading] = useState(false);
 
   useEffect(() => {
-    getNearDestData();
-    getRecommendablePlaceData();
+    updateData(setNearDestDataLoading, mainContentsData.getNearDestData, setNearDestData);
+    updateData(
+      setRecommendablePlaceDataLoading,
+      mainContentsData.getRecommendablePlaceData,
+      setRecommendablePlaceData,
+    );
   }, []);
 
   return (
