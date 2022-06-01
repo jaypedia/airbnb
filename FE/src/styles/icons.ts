@@ -1,5 +1,5 @@
-import { FiMenu, FiSearch } from 'react-icons/fi';
 import { FaAirbnb, FaUserCircle } from 'react-icons/fa';
+import { FiMenu, FiSearch } from 'react-icons/fi';
 import { MdCancel } from 'react-icons/md';
 import styled from 'styled-components';
 
@@ -26,7 +26,7 @@ const Cancel = styled(MdCancel)`
   color: ${({ theme: { color } }) => color.grey4};
   position: absolute;
   top: 50%;
-  right: ${({ $isSearchBox }) => ($isSearchBox ? '125px' : '15px')};
+  right: ${({ $isLast }) => ($isLast ? '125px' : '15px')};
   transform: translateY(-50%);
 `;
 

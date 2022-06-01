@@ -1,15 +1,13 @@
 import styled from 'styled-components';
 
 import { mixins } from '@/styles/mixins';
-import { theme } from '@/styles/theme';
-import { Link } from 'react-router-dom';
 
 const searchBarTopLocation = {
   main: '110px',
   searchResult: '22px',
 };
 
-const SearchBarWrapper = styled.div`
+const SearchBarForm = styled.form`
   ${mixins.flexBox({ justifyContent: 'space-between' })};
   background-color: ${({ theme: { color } }) => color.white};
   position: absolute;
@@ -22,12 +20,15 @@ const SearchBarWrapper = styled.div`
   border-radius: 60px;
 `;
 
-const SearchButton = styled(Link)`
+const SearchButton = styled.button`
+  ${mixins.flexBox({ justifyContent: 'space-around' })};
   background-color: ${({ theme: { color } }) => color.pink};
-  width: 40px;
+  width: ${({ $isActivated }) => ($isActivated ? '90px' : '40px')};
   height: 40px;
   border-radius: 30px;
-  padding: 8px;
+  padding: ${({ $isActivated }) => ($isActivated ? '8px 16px 8px 8px' : '8px')};
+  position: absolute;
+  right: 10px;
 `;
 
 const SearchButtonText = styled.p`
@@ -45,20 +46,21 @@ const SearchTitle = styled.h3`
   margin-bottom: 4px;
 `;
 
-const SearchContent = styled.p`
+const SearchInput = styled.input`
   font-size: ${({ theme: { fontSize } }) => fontSize.small};
   font-weight: ${({ theme: { fontWeight } }) => fontWeight.regular};
   color: ${({ theme: { color } }) => color.grey2};
   line-height: 23px;
   text-transform: uppercase;
+  cursor: pointer;
 `;
 
-const SearchTitleContentWrapper = styled.div`
+const SearchTitleInputWrapper = styled.div`
   ${mixins.flexBox({ direction: 'column', alignItems: 'baseline' })};
   width: 130px;
 `;
 
-const SearchBarBoxStyle = `
+const SearchInputStyle = `
   height: 100%;
   border-radius: 60px;
   cursor: pointer;
@@ -66,27 +68,22 @@ const SearchBarBoxStyle = `
   position: relative;
 
   :hover {
-   background-color: ${theme.color.grey5};
+   background-color: rgb(44 42 42 / 10%);
   }
 `;
 
-const DateBox = styled.div`
-  ${SearchBarBoxStyle}
-  ${mixins.flexBox({ justifyContent: 'center' })};
-  width: 180px;
-  padding-left: 40px;
-`;
+const SearchInputBoxWidth = {
+  체크인: '180px',
+  체크아웃: '180px',
+  요금: '258px',
+  인원: '300px',
+};
 
-const PriceBox = styled.div`
-  ${SearchBarBoxStyle}
+const SearchInputBox = styled.div`
+  ${SearchInputStyle}
   ${mixins.flexBox({ justifyContent: 'flex-start' })};
-  width: 258px;
-`;
-
-const SearchBox = styled.div`
-  ${SearchBarBoxStyle}
-  ${mixins.flexBox({ justifyContent: 'space-between' })};
-  width: 300px;
+  width: ${({ title }) => SearchInputBoxWidth[title]};
+  padding-left: ${({ title }) => title === '체크인' && '40px'};
 `;
 
 const Divider = styled.div`
@@ -96,14 +93,12 @@ const Divider = styled.div`
 `;
 
 export {
-  SearchBarWrapper,
+  SearchBarForm,
   SearchButton,
   SearchButtonText,
   SearchTitle,
-  SearchContent,
-  SearchTitleContentWrapper,
-  DateBox,
-  PriceBox,
-  SearchBox,
+  SearchInput,
+  SearchTitleInputWrapper,
+  SearchInputBox,
   Divider,
 };
