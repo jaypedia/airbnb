@@ -35,9 +35,9 @@
         "groups": ["builtin", "external", "index", ["parent", "sibling"]],
         "pathGroups": [
           {
-            "pattern": "@/**",
+            "pattern": "react*",
             "group": "external",
-            "position": "after"
+            "position": "before"
           }
         ],
         "pathGroupsExcludedImportTypes": ["react"],
