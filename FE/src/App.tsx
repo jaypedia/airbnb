@@ -2,8 +2,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Layout from '@/layout';
 import MainContents from '@/pages/MainContents';
-import SearchResult from '@/pages/SearchResult';
 import NotFound from '@/pages/NotFound';
+import SearchResult from '@/pages/SearchResult';
 
 const App = () => {
   return (

@@ -5,13 +5,11 @@ import ProfileButton from './ProfileButton';
 
 const GNB = ({ currentStyle }) => {
   return (
-    <>
-      <S.GNBWrapper currentStyle={currentStyle}>
-        <Logo />
-        <NavMenu />
-        <ProfileButton />
-      </S.GNBWrapper>
-    </>
+    <S.GNBWrapper currentStyle={currentStyle}>
+      <Logo />
+      <NavMenu />
+      <ProfileButton />
+    </S.GNBWrapper>
   );
 };
 

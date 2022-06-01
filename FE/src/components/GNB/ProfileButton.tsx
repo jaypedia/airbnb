@@ -1,5 +1,6 @@
-import * as S from './GNB.style';
 import * as I from '@/styles/icons';
+
+import * as S from './GNB.style';
 
 const ProfileButton = () => {
   return (

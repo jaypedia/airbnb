@@ -1,6 +1,8 @@
-import GNB from '@/components/GNB';
 import { useLocation } from 'react-router-dom';
+
+import GNB from '@/components/GNB';
 import SearchBar from '@/components/SearchBar';
+
 import * as S from './Header.style';
 
 const Header = () => {
