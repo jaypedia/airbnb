@@ -10,7 +10,6 @@ import java.time.temporal.ChronoUnit;
 @Embeddable
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor(access = AccessLevel.PUBLIC)
 @EqualsAndHashCode
 public class BookingPeriod {
 
@@ -19,6 +18,12 @@ public class BookingPeriod {
 
     @Column(name = "check_out_date")
     private LocalDate checkoutDate;
+
+    @Builder(access = AccessLevel.PUBLIC)
+    private BookingPeriod(LocalDate checkinDate, LocalDate checkoutDate) {
+        this.checkinDate = checkinDate;
+        this.checkoutDate = checkoutDate;
+    }
 
     public long betweenDays() {
         return ChronoUnit.DAYS.between(checkinDate,checkoutDate);
