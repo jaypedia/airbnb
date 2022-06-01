@@ -1,15 +1,15 @@
-import instance from '@/api/core';
+import axios from '@/api/core';
 
 export default {
   getNearDestData() {
-    return instance({
+    return axios({
       url: '/nearby-destination',
       method: 'get',
     });
   },
 
   getRecommendablePlaceData() {
-    return instance({
+    return axios({
       url: '/recommendable-place',
       method: 'get',
     });
