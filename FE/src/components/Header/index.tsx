@@ -1,16 +1,17 @@
 import { useLocation } from 'react-router-dom';
 
+import * as S from './Header.style';
+
 import GNB from '@/components/GNB';
 import SearchBar from '@/components/SearchBar';
-
-import * as S from './Header.style';
+import { SIZE } from '@/constants/constant';
 
 const Header = () => {
   const { pathname } = useLocation();
 
   const currentStyle = {
-    '/': 'main',
-    '/search-result': 'searchResult',
+    '/': SIZE.LARGE,
+    '/search-result': SIZE.SMALL,
   };
 
   return (

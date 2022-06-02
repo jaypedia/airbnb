@@ -17,8 +17,8 @@ const LogoText = styled.h1`
 `;
 
 const gnbPadding = {
-  main: '0 80px',
-  searchResult: '0 24px',
+  large: '0 80px',
+  small: '0 24px',
 };
 
 const GNBWrapper = styled.div`
