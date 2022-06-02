@@ -1,5 +1,6 @@
 package codesquad.airbnb.booking.domain;
 
+import codesquad.airbnb.exception.InvalidPeriodException;
 import lombok.*;
 
 import javax.persistence.Column;
@@ -19,10 +20,20 @@ public class BookingPeriod {
     @Column(name = "check_out_date")
     private LocalDate checkoutDate;
 
-    @Builder(access = AccessLevel.PUBLIC)
     private BookingPeriod(LocalDate checkinDate, LocalDate checkoutDate) {
         this.checkinDate = checkinDate;
         this.checkoutDate = checkoutDate;
+    }
+
+    public static BookingPeriod between(LocalDate checkinDate, LocalDate checkoutDate) {
+        validateDates(checkinDate, checkoutDate);
+        return new BookingPeriod(checkinDate, checkoutDate);
+    }
+
+    private static void validateDates(LocalDate checkinDate, LocalDate checkoutDate) {
+        if (!checkinDate.isBefore(checkoutDate)) {
+            throw new InvalidPeriodException();
+        }
     }
 
     public long betweenDays() {
