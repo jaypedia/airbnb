@@ -3,72 +3,72 @@
     {
       "id": 1,
       "title": "서울",
-      "time-cost": "30",
-      "img-url": "https://user-images.githubusercontent.com/84956036/171088991-c12a547e-ba5b-449e-8600-744e623733ef.png"
+      "timeCost": "30",
+      "imgUrl": "https://user-images.githubusercontent.com/84956036/171088991-c12a547e-ba5b-449e-8600-744e623733ef.png"
     },
     {
       "id": 2,
       "title": "광주",
-      "time-cost": "240",
-      "img-url": "https://user-images.githubusercontent.com/84956036/171089015-b7e85b92-b1de-4b68-9836-593edb232a0a.png"
+      "timeCost": "240",
+      "imgUrl": "https://user-images.githubusercontent.com/84956036/171089015-b7e85b92-b1de-4b68-9836-593edb232a0a.png"
     },
     {
       "id": 3,
       "title": "의정부시",
-      "time-cost": "30",
-      "img-url": "https://user-images.githubusercontent.com/84956036/171089404-2b792579-ec95-4136-bfa4-faed607bb334.png"
+      "timeCost": "30",
+      "imgUrl": "https://user-images.githubusercontent.com/84956036/171089404-2b792579-ec95-4136-bfa4-faed607bb334.png"
     },
     {
       "id": 4,
       "title": "수원시",
-      "time-cost": "45",
-      "img-url": "https://user-images.githubusercontent.com/84956036/171089423-477b137b-d0ae-4000-af3a-729d7f8f65a3.png"
+      "timeCost": "45",
+      "imgUrl": "https://user-images.githubusercontent.com/84956036/171089423-477b137b-d0ae-4000-af3a-729d7f8f65a3.png"
     },
     {
       "id": 5,
       "title": "대구",
-      "time-cost": "210",
-      "img-url": "https://user-images.githubusercontent.com/84956036/171089442-707a28e3-aa4f-4f67-abdc-45d6974b0000.png"
+      "timeCost": "210",
+      "imgUrl": "https://user-images.githubusercontent.com/84956036/171089442-707a28e3-aa4f-4f67-abdc-45d6974b0000.png"
     },
     {
       "id": 6,
       "title": "울산",
-      "time-cost": "270",
-      "img-url": "https://user-images.githubusercontent.com/84956036/171089473-cfaa3503-9613-411c-9676-2b09a067db07.png"
+      "timeCost": "270",
+      "imgUrl": "https://user-images.githubusercontent.com/84956036/171089473-cfaa3503-9613-411c-9676-2b09a067db07.png"
     },
     {
       "id": 7,
       "title": "대전",
-      "time-cost": "120",
-      "img-url": "https://user-images.githubusercontent.com/84956036/171089488-0026ce66-5bca-4200-b25f-2736b8d3cf93.png"
+      "timeCost": "120",
+      "imgUrl": "https://user-images.githubusercontent.com/84956036/171089488-0026ce66-5bca-4200-b25f-2736b8d3cf93.png"
     },
     {
       "id": 8,
       "title": "부천시",
-      "time-cost": "45",
-      "img-url": "https://user-images.githubusercontent.com/84956036/171089508-3f19959a-b545-4d1a-aeba-ac91ef9587a2.png"
+      "timeCost": "45",
+      "imgUrl": "https://user-images.githubusercontent.com/84956036/171089508-3f19959a-b545-4d1a-aeba-ac91ef9587a2.png"
     }
   ],
   "recommendable-place": [
     {
       "id": 1,
-      "title": "자연생활을 만끽할 수 있는 장소",
-      "img-url": "https://user-images.githubusercontent.com/84956036/171089615-568c1a65-67e8-4c17-9990-c9e6f6b706ce.png"
+      "description": "자연생활을 만끽할 수 있는 장소",
+      "imgUrl": "https://user-images.githubusercontent.com/84956036/171089615-568c1a65-67e8-4c17-9990-c9e6f6b706ce.png"
     },
     {
       "id": 2,
-      "title": "독특한 공간",
-      "img-url": "https://user-images.githubusercontent.com/84956036/171089630-515323f7-7322-44b8-973b-020e9e3cedf1.png"
+      "description": "독특한 공간",
+      "imgUrl": "https://user-images.githubusercontent.com/84956036/171089630-515323f7-7322-44b8-973b-020e9e3cedf1.png"
     },
     {
       "id": 3,
-      "title": "집 전체",
-      "img-url": "https://user-images.githubusercontent.com/84956036/171089652-19fd6fcd-a7a4-4f7b-80bc-f133f4e5dbcd.png"
+      "description": "집 전체",
+      "imgUrl": "https://user-images.githubusercontent.com/84956036/171089652-19fd6fcd-a7a4-4f7b-80bc-f133f4e5dbcd.png"
     },
     {
       "id": 4,
-      "title": "반려동물 동반 가능",
-      "img-url": "https://user-images.githubusercontent.com/84956036/171089670-b7e8484a-5b40-4d00-9825-e9470a165701.png"
+      "description": "반려동물 동반 가능",
+      "imgUrl": "https://user-images.githubusercontent.com/84956036/171089670-b7e8484a-5b40-4d00-9825-e9470a165701.png"
     }
   ]
 }
