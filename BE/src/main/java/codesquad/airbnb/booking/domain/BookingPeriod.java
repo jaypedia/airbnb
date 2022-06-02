@@ -44,4 +44,13 @@ public class BookingPeriod {
         return ChronoUnit.WEEKS.between(checkinDate, checkoutDate);
     }
 
+    public boolean hasCommonDate(BookingPeriod otherPeriod) {
+        LocalDate otherCheckInDate = otherPeriod.checkinDate;
+        LocalDate otherCheckOutDate = otherPeriod.checkoutDate;
+
+        if (otherCheckInDate.isAfter(checkoutDate) || otherCheckOutDate.isBefore(checkinDate)) {
+            return false;
+        }
+        return true;
+    }
 }
