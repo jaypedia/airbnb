@@ -1,18 +1,49 @@
-import * as I from '@/styles/icons';
+import { useState } from 'react';
 
 import * as S from './SearchBar.style';
 
-const SearchInput = ({ title, placeholder, isLast, isActivated = false, isSelected = false }) => {
+import { ACTION } from '@/constants/actions';
+import { useSearchDispatch } from '@/context/SearchProvider';
+import * as I from '@/styles/icons';
+
+const SearchInput = ({
+  searchTitle,
+  isLast,
+  isSelected = false,
+  currentStyle,
+  placeholder,
+  field,
+}) => {
+  const dispatch = useSearchDispatch();
+  const [isThisActivated, setIsThisActivated] = useState(false);
+
+  const handleFocus = () => {
+    dispatch({ type: ACTION.FOCUS_FIELD });
+    setIsThisActivated(true);
+  };
+
+  const handleBlur = () => {
+    dispatch({ type: ACTION.BLUR_FIELD });
+    setIsThisActivated(false);
+  };
+
   return (
     <>
-      <S.SearchInputBox title={title} $isActivated={isActivated}>
+      <S.SearchInputBox
+        currentStyle={currentStyle}
+        searchTitle={searchTitle}
+        $isActivated={isThisActivated}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        tabIndex="0"
+      >
         <S.SearchTitleInputWrapper>
-          <S.SearchTitle>{title}</S.SearchTitle>
-          <S.SearchInput placeholder={placeholder} readOnly />
+          <S.SearchTitle currentStyle={currentStyle}>{searchTitle}</S.SearchTitle>
+          {currentStyle === 'large' && <S.SearchInput placeholder={placeholder} readOnly />}
           {isSelected && <I.Cancel $isLast={isLast} />}
         </S.SearchTitleInputWrapper>
       </S.SearchInputBox>
-      {!isLast && <S.Divider />}
+      {!isLast && <S.Divider currentStyle={currentStyle} />}
     </>
   );
 };
