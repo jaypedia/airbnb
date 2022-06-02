@@ -1,19 +1,12 @@
 import { useState, useEffect } from 'react';
 
 import { Skeleton, Stack, Typography, Grid, Box } from '@mui/material';
-import styled from 'styled-components';
 
 import mainContentsData from '@/apis/mainContents';
 import AlbumItem from '@/components/common/AlbumItem';
 import ListItem from '@/components/common/ListItem';
+import * as S from '@/pages/MainContents/MainContents.style';
 import updateData from '@/utils/updateData';
-
-const MainContentsBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 80px;
-`;
 
 const MainContent = () => {
   const [nearDestData, setNearDestData] = useState(null);
@@ -61,20 +54,20 @@ const MainContent = () => {
   ));
 
   return (
-    <MainContentsBox>
+    <S.MainContentsBox>
       <Box sx={{ width: 1200, height: 300 }}>
         <Typography variant="h5"> 가까운 여행지 둘러보기 </Typography>
         <Grid container my={1} rowSpacing={3} columnSpacing={1}>
           {listItems}
         </Grid>
       </Box>
-      <Box sx={{ width: 1200, height: 300 }}>
+      <Box sx={{ width: 1200, height: 300 }} mt={3}>
         <Typography variant="h5"> 어디서나, 여행은 살아보는 거야! </Typography>
         <Grid container my={1} rowSpacing={2} columnSpacing={1}>
           {albumItems}
         </Grid>
       </Box>
-    </MainContentsBox>
+    </S.MainContentsBox>
   );
 };
 
