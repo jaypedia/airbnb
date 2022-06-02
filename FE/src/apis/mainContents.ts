@@ -1,4 +1,4 @@
-import axios from '@/api/core';
+import axios from '@/apis/core';
 
 export default {
   getNearDestData() {
