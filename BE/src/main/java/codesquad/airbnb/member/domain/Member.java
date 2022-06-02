@@ -1,8 +1,6 @@
 package codesquad.airbnb.member.domain;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -10,6 +8,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "member")
+@ToString(of = {"id", "gitHubId", "name"})
 public class Member {
 
     @Id
@@ -23,7 +22,8 @@ public class Member {
     @Column(name = "name", unique = true)
     private String name;
 
-    public Member(String gitHubId, String name) {
+    @Builder(access = AccessLevel.PUBLIC)
+    private Member(String gitHubId, String name) {
         this.gitHubId = gitHubId;
         this.name = name;
     }
