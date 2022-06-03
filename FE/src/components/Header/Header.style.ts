@@ -1,22 +1,23 @@
 import styled from 'styled-components';
+
 import heroImg from '@/assets/hero-img.png';
 import { shadow } from '@/styles/commonStyle';
 
-const main = `
+const large = `
   background: url(${heroImg}) no-repeat;
   background-size: cover;
   height: 70vh;
 `;
 
-const searchResult = `
+const small = `
   background-color: white;
   height: 94px;
   ${shadow}
 `;
 
 const headerStyle = {
-  main,
-  searchResult,
+  large,
+  small,
 };
 
 const HeaderWrapper = styled.div`

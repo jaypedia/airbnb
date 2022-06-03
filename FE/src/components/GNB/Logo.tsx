@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 
 import * as S from './GNB.style';
+
 import * as I from '@/styles/icons';
 
 const Logo = () => {
