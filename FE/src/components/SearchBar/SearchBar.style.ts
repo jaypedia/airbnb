@@ -36,6 +36,7 @@ const SearchBarForm = styled.form`
   border: 1px solid ${({ theme: { color } }) => color.grey5};
   border-radius: 60px;
   transition: all 0.5 ease;
+  z-index: 1;
 `;
 
 const searchButtonSize = {

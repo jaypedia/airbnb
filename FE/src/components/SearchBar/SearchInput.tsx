@@ -18,13 +18,26 @@ const SearchInput = ({
   const [isThisActivated, setIsThisActivated] = useState(false);
 
   const handleFocus = () => {
-    dispatch({ type: ACTION.FOCUS_FIELD });
+    dispatch({
+      type: ACTION.FOCUS_FIELD,
+    });
     setIsThisActivated(true);
   };
 
   const handleBlur = () => {
-    dispatch({ type: ACTION.BLUR_FIELD });
+    dispatch({
+      type: ACTION.BLUR_FIELD,
+    });
     setIsThisActivated(false);
+  };
+
+  const handleClick = () => {
+    dispatch({
+      type: ACTION.CLICK_FIELD,
+      payload: {
+        currentField: field,
+      },
+    });
   };
 
   return (
@@ -36,6 +49,7 @@ const SearchInput = ({
         onFocus={handleFocus}
         onBlur={handleBlur}
         tabIndex="0"
+        onClick={handleClick}
       >
         <S.SearchTitleInputWrapper>
           <S.SearchTitle currentStyle={currentStyle}>{searchTitle}</S.SearchTitle>
