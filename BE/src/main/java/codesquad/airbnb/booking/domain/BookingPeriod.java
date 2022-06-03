@@ -32,7 +32,11 @@ public class BookingPeriod {
 
     private static void validateDates(LocalDate checkinDate, LocalDate checkoutDate) {
         if (!checkinDate.isBefore(checkoutDate)) {
-            throw new InvalidPeriodException();
+            throw new InvalidPeriodException("체크인 날짜는 체크아웃 날짜 이전이여야 합니다.");
+        }
+
+        if (checkinDate.isBefore(LocalDate.now())) {
+            throw new InvalidPeriodException("오늘 이전의 날짜로 예약할 수 없습니다.");
         }
     }
 
