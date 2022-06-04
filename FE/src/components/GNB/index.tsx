@@ -3,15 +3,13 @@ import Logo from './Logo';
 import NavMenu from './NavMenu';
 import ProfileButton from './ProfileButton';
 
-const GNB = ({ path }) => {
+const GNB = ({ currentStyle }) => {
   return (
-    <>
-      <S.GNBWrapper path={path}>
-        <Logo />
-        <NavMenu />
-        <ProfileButton />
-      </S.GNBWrapper>
-    </>
+    <S.GNBWrapper currentStyle={currentStyle}>
+      <Logo />
+      <NavMenu />
+      <ProfileButton />
+    </S.GNBWrapper>
   );
 };
 

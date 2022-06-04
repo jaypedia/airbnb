@@ -1,22 +1,29 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+import { shadow } from '@/styles/commonStyle';
 import { mixins } from '@/styles/mixins';
 
+const LogoWrapper = styled.div`
+  ${mixins.flexBox({ justifyContent: 'space-between' })};
+  width: 116px;
+`;
+
 const LogoText = styled.h1`
-  font-size: ${({ theme: { fontSize } }) => fontSize.xxLarge};
-  font-weight: ${({ theme: { fontWeight } }) => fontWeight.logo};
-  color: ${({ theme: { color } }) => color.grey1};
+  font-size: ${({ theme: { fontSize } }) => fontSize.xLarge};
+  font-weight: ${({ theme: { fontWeight } }) => fontWeight.bold};
+  color: ${({ theme: { color } }) => color.pink};
   letter-spacing: -0.04em;
 `;
 
 const gnbPadding = {
-  '/': '0 80px',
-  '/search-result': '0 24px',
+  large: '0 80px',
+  small: '0 24px',
 };
 
 const GNBWrapper = styled.div`
   ${mixins.flexBox({ justifyContent: 'space-between' })};
-  padding: ${({ path }) => gnbPadding[path]};
+  padding: ${({ currentStyle }) => gnbPadding[currentStyle]};
   height: 94px;
 `;
 
@@ -25,18 +32,17 @@ const NavWrapper = styled.div`
   width: 186px;
 `;
 
-const NavItem = styled.li`
+const NavItem = styled(Link)`
   color: ${({ theme: { color } }) => color.grey1};
   cursor: pointer;
 
   :hover {
-    color: ${({ theme: { color } }) => color.black};
+    color: ${({ theme: { color } }) => color.grey3};
     text-decoration: underline;
-    font-weight: ${({ theme: { fontWeight } }) => fontWeight.bold};
   }
 `;
 
-const ProfileWrapper = styled.div`
+const ProfileButton = styled.button`
   ${mixins.flexBox({ justifyContent: 'space-between' })};
   width: 76px;
   height: 40px;
@@ -44,16 +50,11 @@ const ProfileWrapper = styled.div`
   padding: 4px;
   border: 1px solid ${({ theme: { color } }) => color.grey4};
   border-radius: 30px;
-  cursor: pointer;
+  transition: all 0.5 ease;
+
+  :hover {
+    ${shadow}
+  }
 `;
 
-const ProfileImgCircle = styled.div`
-  ${mixins.flexBox({ justifyContent: 'center' })};
-  width: 32px;
-  height: 32px;
-  background-color: ${({ theme: { color } }) => color.grey3};
-  border-radius: 50%;
-  padding: 5px;
-`;
-
-export { LogoText, GNBWrapper, NavWrapper, NavItem, ProfileWrapper, ProfileImgCircle };
+export { LogoWrapper, LogoText, GNBWrapper, NavWrapper, NavItem, ProfileButton };
