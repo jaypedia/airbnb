@@ -4,14 +4,17 @@ import SearchInput from './SearchInput';
 
 import Modal from '@/components/Modal';
 import { ACTION } from '@/constants/actions';
+import { SIZE } from '@/constants/constant';
 import searchBarText from '@/constants/searchBarData';
 import { useSearchState, useSearchDispatch } from '@/context/SearchProvider';
+import { useStyleState } from '@/context/StyleProvider';
 import searchBarData from '@/mocks/searchBarTempData';
 import { isLastElementinArray } from '@/utils/utils';
 
-const SearchBar = ({ currentStyle }) => {
+const SearchBar = () => {
   const { isActivated, modalOn } = useSearchState();
   const dispatch = useSearchDispatch();
+  const { size } = useStyleState();
 
   const closeModal = () => {
     dispatch({ type: ACTION.CLOSE_MODAL });
@@ -19,14 +22,13 @@ const SearchBar = ({ currentStyle }) => {
 
   return (
     <>
-      <S.SearchBarForm currentStyle={currentStyle} isActivated={isActivated}>
-        {currentStyle === 'large'
+      <S.SearchBarForm size={size} isActivated={isActivated}>
+        {size === SIZE.LARGE
           ? searchBarText.map(({ id, title, field, placeholder }, index) => (
               <SearchInput
                 key={id}
                 searchTitle={title}
                 field={field}
-                currentStyle={currentStyle}
                 placeholder={placeholder}
                 isLast={isLastElementinArray(searchBarText, index)}
               />
@@ -35,11 +37,10 @@ const SearchBar = ({ currentStyle }) => {
               <SearchInput
                 key={id}
                 searchTitle={contents}
-                currentStyle={currentStyle}
                 isLast={isLastElementinArray(searchBarData, index)}
               />
             ))}
-        <SearchButton currentStyle={currentStyle} />
+        <SearchButton />
       </S.SearchBarForm>
       {modalOn && <Modal onClose={closeModal} />}
     </>

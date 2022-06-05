@@ -1,23 +1,29 @@
+import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import * as S from './Header.style';
 
 import GNB from '@/components/GNB';
 import SearchBar from '@/components/SearchBar';
-import { SIZE } from '@/constants/constant';
+import { ACTION } from '@/constants/actions';
+import { useStyleDispatch, useStyleState } from '@/context/StyleProvider';
 
 const Header = () => {
   const { pathname } = useLocation();
+  const { size } = useStyleState();
+  const dispatch = useStyleDispatch();
 
-  const currentStyle = {
-    '/': SIZE.LARGE,
-    '/search-result': SIZE.SMALL,
-  };
+  useEffect(() => {
+    dispatch({
+      type: ACTION.SET_PATH,
+      payload: { currentPath: pathname },
+    });
+  }, [pathname]);
 
   return (
-    <S.HeaderWrapper currentStyle={currentStyle[pathname]}>
-      <GNB currentStyle={currentStyle[pathname]} />
-      <SearchBar currentStyle={currentStyle[pathname]} />
+    <S.HeaderWrapper size={size}>
+      <GNB />
+      <SearchBar />
     </S.HeaderWrapper>
   );
 };

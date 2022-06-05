@@ -21,7 +21,7 @@ const headerStyle = {
 };
 
 const HeaderWrapper = styled.div`
-  ${({ currentStyle }) => headerStyle[currentStyle]}
+  ${({ size }) => headerStyle[size]}
 `;
 
 export { HeaderWrapper };

@@ -3,18 +3,14 @@ import { useState } from 'react';
 import * as S from './SearchBar.style';
 
 import { ACTION } from '@/constants/actions';
+import { SIZE } from '@/constants/constant';
 import { useSearchDispatch } from '@/context/SearchProvider';
+import { useStyleState } from '@/context/StyleProvider';
 import * as I from '@/styles/icons';
 
-const SearchInput = ({
-  searchTitle,
-  isLast,
-  isSelected = false,
-  currentStyle,
-  placeholder,
-  field,
-}) => {
+const SearchInput = ({ searchTitle, isLast, isSelected = false, placeholder, field }) => {
   const dispatch = useSearchDispatch();
+  const { size } = useStyleState();
   const [isThisActivated, setIsThisActivated] = useState(false);
 
   const handleFocus = () => {
@@ -43,7 +39,7 @@ const SearchInput = ({
   return (
     <>
       <S.SearchInputBox
-        currentStyle={currentStyle}
+        size={size}
         searchTitle={searchTitle}
         $isActivated={isThisActivated}
         onFocus={handleFocus}
@@ -52,12 +48,12 @@ const SearchInput = ({
         onClick={handleClick}
       >
         <S.SearchTitleInputWrapper>
-          <S.SearchTitle currentStyle={currentStyle}>{searchTitle}</S.SearchTitle>
-          {currentStyle === 'large' && <S.SearchInput placeholder={placeholder} readOnly />}
+          <S.SearchTitle size={size}>{searchTitle}</S.SearchTitle>
+          {size === SIZE.LARGE && <S.SearchInput placeholder={placeholder} readOnly />}
           {isSelected && <I.Cancel $isLast={isLast} />}
         </S.SearchTitleInputWrapper>
       </S.SearchInputBox>
-      {!isLast && <S.Divider currentStyle={currentStyle} />}
+      {!isLast && <S.Divider size={size} />}
     </>
   );
 };
