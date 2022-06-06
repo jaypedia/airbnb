@@ -3,9 +3,13 @@ import Logo from './Logo';
 import NavMenu from './NavMenu';
 import ProfileButton from './ProfileButton';
 
-const GNB = ({ currentStyle }) => {
+import { useStyleState } from '@/context/StyleProvider';
+
+const GNB = () => {
+  const { size } = useStyleState();
+
   return (
-    <S.GNBWrapper currentStyle={currentStyle}>
+    <S.GNBWrapper size={size}>
       <Logo />
       <NavMenu />
       <ProfileButton />

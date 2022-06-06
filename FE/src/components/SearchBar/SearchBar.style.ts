@@ -27,7 +27,7 @@ const searchBarSize = {
 
 const SearchBarForm = styled.form`
   ${mixins.flexBox({ justifyContent: 'space-between' })};
-  ${({ currentStyle }) => searchBarSize[currentStyle]}
+  ${({ size }) => searchBarSize[size]}
   background-color: ${({ theme: { color }, isActivated }) =>
     isActivated ? color.grey6 : color.white};
   position: absolute;
@@ -52,7 +52,7 @@ const searchButtonSize = {
 
 const SearchButton = styled.button`
   ${mixins.flexBox({ justifyContent: 'space-around' })};
-  ${({ currentStyle }) => searchButtonSize[currentStyle]}
+  ${({ size }) => searchButtonSize[size]}
   background-color: ${({ theme: { color } }) => color.pink};
   width: ${({ $isActivated }) => $isActivated && '90px'};
   border-radius: 30px;
@@ -80,7 +80,7 @@ const searchTitleFont = {
 };
 
 const SearchTitle = styled.p`
-  ${({ currentStyle }) => searchTitleFont[currentStyle]}
+  ${({ size }) => searchTitleFont[size]}
   font-size: ${({ theme: { fontSize } }) => fontSize.xxSmall};
   color: ${({ theme: { color } }) => color.black};
   text-transform: uppercase;
@@ -126,7 +126,7 @@ const SearchInputBoxWidth = {
 
 const SearchInputBox = styled.div`
   ${mixins.flexBox({ justifyContent: 'flex-start' })}
-  ${({ currentStyle }) => SearchInputStyle[currentStyle]};
+  ${({ size }) => SearchInputStyle[size]};
   ${({ $isActivated }) => $isActivated && ActivatedInputShadow}
   width: ${({ searchTitle }) =>
     SearchInputBoxWidth[searchTitle] ? SearchInputBoxWidth[searchTitle] : '136px'};
@@ -136,7 +136,7 @@ const SearchInputBox = styled.div`
 
 const Divider = styled.div`
   width: 1px;
-  height: ${({ currentStyle }) => (currentStyle === 'large' ? '44px' : '25px')};
+  height: ${({ size }) => (size === 'large' ? '44px' : '25px')};
   background-color: ${({ theme: { color } }) => color.grey5};
 `;
 

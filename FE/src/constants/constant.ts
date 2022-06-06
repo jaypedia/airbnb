@@ -3,4 +3,9 @@ const SIZE = {
   SMALL: 'small',
 };
 
-export { SIZE };
+const LANGUAGE = {
+  kr: 'kr',
+  en: 'en',
+};
+
+export { SIZE, LANGUAGE };
