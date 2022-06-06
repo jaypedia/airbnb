@@ -6,14 +6,13 @@ import Modal from '@/components/Modal';
 import { ACTION } from '@/constants/actions';
 import { SIZE } from '@/constants/constant';
 import searchBarText from '@/constants/searchBarData';
-import { useSearchState, useSearchDispatch } from '@/context/SearchProvider';
-import { useStyleState } from '@/context/StyleProvider';
+import { useSearchUIState, useSearchUIDispatch, useStyleState } from '@/context';
 import searchBarData from '@/mocks/searchBarTempData';
 import { isLastElementinArray } from '@/utils/utils';
 
 const SearchBar = () => {
-  const { isActivated, modalOn } = useSearchState();
-  const dispatch = useSearchDispatch();
+  const { isActivated, modalOn } = useSearchUIState();
+  const dispatch = useSearchUIDispatch();
   const { size } = useStyleState();
 
   const closeModal = () => {

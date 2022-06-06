@@ -6,7 +6,7 @@ import * as S from './Header.style';
 import GNB from '@/components/GNB';
 import SearchBar from '@/components/SearchBar';
 import { ACTION } from '@/constants/actions';
-import { useStyleDispatch, useStyleState } from '@/context/StyleProvider';
+import { useStyleDispatch, useStyleState } from '@/context';
 
 const Header = () => {
   const { pathname } = useLocation();

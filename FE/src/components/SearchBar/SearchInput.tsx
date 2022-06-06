@@ -4,12 +4,11 @@ import * as S from './SearchBar.style';
 
 import { ACTION } from '@/constants/actions';
 import { SIZE } from '@/constants/constant';
-import { useSearchDispatch } from '@/context/SearchProvider';
-import { useStyleState } from '@/context/StyleProvider';
+import { useSearchUIDispatch, useStyleState } from '@/context';
 import * as I from '@/styles/icons';
 
 const SearchInput = ({ searchTitle, isLast, isSelected = false, placeholder, field }) => {
-  const dispatch = useSearchDispatch();
+  const dispatch = useSearchUIDispatch();
   const { size } = useStyleState();
   const [isThisActivated, setIsThisActivated] = useState(false);
 

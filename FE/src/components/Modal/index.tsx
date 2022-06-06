@@ -3,7 +3,7 @@ import reactDom from 'react-dom';
 import * as S from './Modal.style';
 
 import Calendar from '@/components/Calendar';
-import { useSearchState } from '@/context/SearchProvider';
+import { useSearchUIState } from '@/context';
 
 const ModalPortal = ({ children }) => {
   const el = document.getElementById('modal');
@@ -11,7 +11,7 @@ const ModalPortal = ({ children }) => {
 };
 
 const Modal = ({ onClose }) => {
-  const { currentField } = useSearchState();
+  const { currentField } = useSearchUIState();
 
   const modalContents = () => {
     switch (currentField) {

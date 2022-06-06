@@ -1,6 +1,6 @@
 import * as S from './SearchBar.style';
 
-import { useStyleState } from '@/context/StyleProvider';
+import { useStyleState } from '@/context';
 import * as I from '@/styles/icons';
 
 const SearchButton = ({ isActivated = false }) => {

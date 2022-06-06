@@ -2,18 +2,15 @@ import { Outlet } from 'react-router-dom';
 
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
-import { SearchProvider } from '@/context/SearchProvider';
-import { StyleProvider } from '@/context/StyleProvider';
+import { Providers } from '@/context';
 
 const Layout = () => {
   return (
     <>
-      <SearchProvider>
-        <StyleProvider>
-          <Header />
-        </StyleProvider>
+      <Providers>
+        <Header />
         <Outlet />
-      </SearchProvider>
+      </Providers>
       <Footer />
     </>
   );

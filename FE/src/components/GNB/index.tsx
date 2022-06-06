@@ -3,7 +3,7 @@ import Logo from './Logo';
 import NavMenu from './NavMenu';
 import ProfileButton from './ProfileButton';
 
-import { useStyleState } from '@/context/StyleProvider';
+import { useStyleState } from '@/context';
 
 const GNB = () => {
   const { size } = useStyleState();
