@@ -5,13 +5,18 @@ const DateCell = styled.td`
   height: 47px;
   text-align: center;
   font-size: ${({ theme: { fontSize } }) => fontSize.xSmall};
-  cursor: pointer;
+  cursor: ${({ isPast }) => (isPast ? 'not-allowed' : 'pointer')};
+  color: ${({ theme: { color }, isPast }) => (isPast ? color.grey4 : color.black)};
+  border-radius: 50%;
 
+  ${({ isPast }) =>
+    !isPast &&
+    `
   :hover {
     background-color: black;
     color: white;
-    border-radius: 50%;
   }
+  `}
 `;
 
 export { DateCell };

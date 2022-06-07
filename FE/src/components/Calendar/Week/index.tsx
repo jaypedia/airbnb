@@ -2,11 +2,11 @@ import * as S from './Week.style';
 
 import DateCell from '@/components/Calendar/DateCell';
 
-const Week = ({ week }) => {
+const Week = ({ week, monthIdx }) => {
   return (
     <S.WeekRow>
       {week.map((date, index) => (
-        <DateCell key={String(index)} date={date} />
+        <DateCell key={String(index)} date={date} monthIdx={monthIdx} />
       ))}
     </S.WeekRow>
   );

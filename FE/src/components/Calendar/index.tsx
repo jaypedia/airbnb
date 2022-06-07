@@ -11,10 +11,10 @@ import { getSliderMonthData } from '@/utils/calendar';
 export const CalendarContext = createContext(null);
 
 const Calendar = ({ language }) => {
-  const value = useMemo(() => ({ language }), []);
-
   const today = new Date();
   const year = today.getFullYear();
+  const value = useMemo(() => ({ language, today, year }), []);
+
   const [slide, setSlide] = useState(-MONTH_WIDTH_PX);
   const [monthIdx, setMonthIdx] = useState(today.getMonth() - 1);
   const [monthData, setMonthData] = useState(getSliderMonthData(year, monthIdx));

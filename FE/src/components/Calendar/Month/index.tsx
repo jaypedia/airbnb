@@ -18,7 +18,7 @@ const Month = ({ monthData, monthIdx, year }) => {
       <S.DateTable>
         <S.DateTableBody>
           {monthData.map((week, index) => (
-            <Week key={String(index)} week={week} />
+            <Week key={String(index)} week={week} monthIdx={monthIdx} />
           ))}
         </S.DateTableBody>
       </S.DateTable>
