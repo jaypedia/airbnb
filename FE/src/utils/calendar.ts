@@ -1,3 +1,6 @@
+import { MONTH_NAME } from '@/constants/calendar';
+import { LANGUAGE } from '@/constants/constant';
+
 const getMonthArr = (year, monthIdx) => {
   const monthArr = [];
   const lastDate = new Date(year, monthIdx + 1, 0).getDate();
@@ -20,7 +23,27 @@ const getMonthArr = (year, monthIdx) => {
       }
     }
   }
+
   return monthArr;
 };
 
-export { getMonthArr };
+const getSliderMonthData = (year, monthIdx) => {
+  const SliderMonthData = [];
+  const MAX_MONTH_COUNT = 4;
+  for (let i = monthIdx; i < monthIdx + MAX_MONTH_COUNT; i++) {
+    SliderMonthData.push(getMonthArr(year, i));
+  }
+  return SliderMonthData;
+};
+
+const getYearMonthText = (language, monthIdx, year) => {
+  const thisDay = new Date(year, monthIdx);
+  const thisMonthIdx = thisDay.getMonth();
+  const thisYear = thisDay.getFullYear();
+
+  return language === LANGUAGE.en
+    ? `${MONTH_NAME[thisMonthIdx][language]} ${thisYear}`
+    : `${thisYear}년 ${MONTH_NAME[thisMonthIdx][language]}`;
+};
+
+export { getMonthArr, getSliderMonthData, getYearMonthText };
