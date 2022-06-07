@@ -31,6 +31,10 @@ const Cancel = styled(MdCancel)`
   top: 50%;
   right: ${({ $isLast }) => ($isLast ? '125px' : '15px')};
   transform: translateY(-50%);
+
+  :hover {
+    color: ${({ theme: { color } }) => color.grey3};
+  }
 `;
 
 const Airbnb = styled(FaAirbnb)`
