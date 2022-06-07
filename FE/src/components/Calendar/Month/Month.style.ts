@@ -22,7 +22,9 @@ const YearMonthText = styled.h2`
   color: ${({ theme: { color } }) => color.black};
 `;
 
-const DateTable = styled.table``;
+const DateTable = styled.table`
+  border-spacing: 0 3px;
+`;
 
 const DateTableBody = styled.tbody``;
 
