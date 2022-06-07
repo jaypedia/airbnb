@@ -1,6 +1,7 @@
 import { createContext, useContext, useReducer } from 'react';
 
 import { ACTION } from '@/constants/actions';
+import { INPUT_FIELD } from '@/constants/constant';
 import { getKoreanMonthDateString } from '@/utils/calendar';
 
 const initialState = {
@@ -37,11 +38,11 @@ const DatePickerReducer = (state, action) => {
   switch (action.type) {
     case ACTION.PICK_DATE: {
       const { checkIn } = state;
-      const { year, date, monthIdx } = action.payload;
+      const { year, date, monthIdx, focusedField } = action.payload;
       const checkInOutString = getKoreanMonthDateString(date, monthIdx);
       const dateObj = new Date(year, monthIdx, date);
 
-      if (checkIn.kr && checkIn.dateObj <= dateObj) {
+      if ((checkIn.kr && checkIn.dateObj <= dateObj) || focusedField === INPUT_FIELD.CHECK_OUT) {
         return {
           ...state,
           checkOut: {

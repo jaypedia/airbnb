@@ -3,7 +3,8 @@ import { createContext, useContext, useReducer } from 'react';
 import { ACTION } from '@/constants/actions';
 
 const initialState = {
-  currentField: null,
+  currentField: '',
+  focusedField: '',
   isActivated: false,
   modalOn: false,
 };
@@ -30,10 +31,12 @@ const useSearchUIDispatch = () => {
 const searchUIReducer = (state, action) => {
   switch (action.type) {
     case ACTION.FOCUS_FIELD: {
+      const { focusedField } = action.payload;
       return {
         ...state,
         isActivated: true,
         modalOn: true,
+        focusedField,
       };
     }
     case ACTION.CLICK_FIELD: {
@@ -41,13 +44,37 @@ const searchUIReducer = (state, action) => {
       return {
         ...state,
         currentField,
+        focusedField: currentField,
       };
     }
+    // Blur 이벤트 발생 시, 모달이 없는 상태에서만 isActivated: false로 변경
     case ACTION.BLUR_FIELD: {
-      return { ...state, isActivated: false };
+      if (state.modalOn) {
+        return state;
+      }
+
+      return {
+        ...state,
+        isActivated: false,
+        focusedField: '',
+      };
     }
     case ACTION.CLOSE_MODAL: {
-      return { ...state, modalOn: false };
+      return {
+        ...state,
+        modalOn: false,
+        isActivated: false,
+        focusedField: '',
+      };
+    }
+    case ACTION.CHANGE_FOCUS: {
+      const { checkIn, focusedField } = action.payload;
+      if (checkIn.kr) return state;
+
+      return {
+        ...state,
+        focusedField,
+      };
     }
     default:
       console.log('Invaild action type');

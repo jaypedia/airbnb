@@ -4,23 +4,43 @@ import * as S from './DatePicker.style';
 
 import { CalendarContext } from '@/components/Calendar';
 import { ACTION } from '@/constants/actions';
-import { useDatePickerDispatch, useDatePickerState } from '@/context';
+import { INPUT_FIELD } from '@/constants/constant';
+import {
+  useDatePickerDispatch,
+  useDatePickerState,
+  useSearchUIState,
+  useSearchUIDispatch,
+} from '@/context';
 import { getKoreanMonthDateString } from '@/utils/calendar';
 
 const DatePicker = ({ date, monthIdx }) => {
   const { checkIn, checkOut } = useDatePickerState();
   const { year } = useContext(CalendarContext);
-  const dispatch = useDatePickerDispatch();
+  const { focusedField } = useSearchUIState();
+  const datePickerdispatch = useDatePickerDispatch();
+  const searchUIDispatch = useSearchUIDispatch();
   const checkInOutString = getKoreanMonthDateString(date, monthIdx);
   const dateObj = new Date(year, monthIdx, date);
 
   const handleClick = () => {
-    dispatch({
+    const field =
+      focusedField === INPUT_FIELD.CHECK_OUT ? INPUT_FIELD.CHECK_IN : INPUT_FIELD.CHECK_OUT;
+
+    datePickerdispatch({
       type: ACTION.PICK_DATE,
       payload: {
         year,
         date,
         monthIdx,
+        focusedField,
+      },
+    });
+
+    searchUIDispatch({
+      type: ACTION.CHANGE_FOCUS,
+      payload: {
+        checkIn,
+        focusedField: field,
       },
     });
   };
@@ -30,6 +50,7 @@ const DatePicker = ({ date, monthIdx }) => {
   };
 
   const checkBetween = () => {
+    if (!checkIn.kr) return;
     return checkIn.dateObj < dateObj && checkOut.dateObj > dateObj;
   };
 

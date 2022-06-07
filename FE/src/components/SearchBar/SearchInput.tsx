@@ -1,10 +1,9 @@
-import { useState } from 'react';
-
 import * as S from './SearchBar.style';
 
 import { ACTION } from '@/constants/actions';
 import { SIZE, INPUT_FIELD, LANGUAGE } from '@/constants/constant';
 import {
+  useSearchUIState,
   useSearchUIDispatch,
   useStyleState,
   useDatePickerState,
@@ -13,24 +12,25 @@ import {
 import * as I from '@/styles/icons';
 
 const SearchInput = ({ searchTitle, isLast, placeholder, field }) => {
+  const { focusedField } = useSearchUIState();
   const searchUIdispatch = useSearchUIDispatch();
   const datePickerDispatch = useDatePickerDispatch();
   const { size } = useStyleState();
-  const [isThisActivated, setIsThisActivated] = useState(false);
   const { checkIn, checkOut } = useDatePickerState();
 
   const handleFocus = () => {
     searchUIdispatch({
       type: ACTION.FOCUS_FIELD,
+      payload: {
+        focusedField: field,
+      },
     });
-    setIsThisActivated(true);
   };
 
   const handleBlur = () => {
     searchUIdispatch({
       type: ACTION.BLUR_FIELD,
     });
-    setIsThisActivated(false);
   };
 
   const handleClick = () => {
@@ -76,7 +76,7 @@ const SearchInput = ({ searchTitle, isLast, placeholder, field }) => {
       <S.SearchInputBox
         size={size}
         searchTitle={searchTitle}
-        $isActivated={isThisActivated}
+        $isActivated={field === focusedField}
         onFocus={handleFocus}
         onBlur={handleBlur}
         tabIndex="0"
