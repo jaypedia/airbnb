@@ -3,21 +3,15 @@ import SearchButton from './SearchButton';
 import SearchInput from './SearchInput';
 
 import Modal from '@/components/Modal';
-import { ACTION } from '@/constants/actions';
 import { SIZE } from '@/constants/constant';
 import searchBarText from '@/constants/searchBarData';
-import { useSearchUIState, useSearchUIDispatch, useStyleState } from '@/context';
+import { useSearchUIState, useStyleState } from '@/context';
 import searchBarData from '@/mocks/searchBarTempData';
 import { isLastElementinArray } from '@/utils/utils';
 
 const SearchBar = () => {
   const { isActivated, modalOn } = useSearchUIState();
-  const dispatch = useSearchUIDispatch();
   const { size } = useStyleState();
-
-  const closeModal = () => {
-    dispatch({ type: ACTION.CLOSE_MODAL });
-  };
 
   return (
     <>
@@ -41,7 +35,7 @@ const SearchBar = () => {
             ))}
         <SearchButton />
       </S.SearchBarForm>
-      {modalOn && <Modal onClose={closeModal} />}
+      {modalOn && <Modal />}
     </>
   );
 };

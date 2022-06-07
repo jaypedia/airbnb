@@ -3,20 +3,27 @@ import reactDom from 'react-dom';
 import * as S from './Modal.style';
 
 import Calendar from '@/components/Calendar';
-import { useSearchUIState } from '@/context';
+import { ACTION } from '@/constants/actions';
+import { LANGUAGE } from '@/constants/constant';
+import { useSearchUIState, useSearchUIDispatch } from '@/context';
 
 const ModalPortal = ({ children }) => {
   const el = document.getElementById('modal');
   return reactDom.createPortal(children, el);
 };
 
-const Modal = ({ onClose }) => {
+const Modal = () => {
   const { currentField } = useSearchUIState();
+  const dispatch = useSearchUIDispatch();
+
+  const closeModal = () => {
+    dispatch({ type: ACTION.CLOSE_MODAL });
+  };
 
   const modalContents = () => {
     switch (currentField) {
       case 'dates': {
-        return <Calendar />;
+        return <Calendar language={LANGUAGE.en} />;
       }
       case 'price': {
         return 'price';
@@ -31,7 +38,7 @@ const Modal = ({ onClose }) => {
 
   return (
     <ModalPortal>
-      <S.BackgroundLayer onClick={onClose} />
+      <S.BackgroundLayer onClick={closeModal} />
       <S.ModalContainer>{modalContents()}</S.ModalContainer>
     </ModalPortal>
   );
