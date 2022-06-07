@@ -4,7 +4,7 @@ import * as S from './Modal.style';
 
 import Calendar from '@/components/Calendar';
 import { ACTION } from '@/constants/actions';
-import { LANGUAGE } from '@/constants/constant';
+import { LANGUAGE, INPUT_FIELD } from '@/constants/constant';
 import { useSearchUIState, useSearchUIDispatch } from '@/context';
 
 const ModalPortal = ({ children }) => {
@@ -20,15 +20,16 @@ const Modal = () => {
     dispatch({ type: ACTION.CLOSE_MODAL });
   };
 
-  const modalContents = () => {
+  const getModalContents = () => {
     switch (currentField) {
-      case 'dates': {
+      case INPUT_FIELD.CHECK_IN:
+      case INPUT_FIELD.CHECK_OUT: {
         return <Calendar language={LANGUAGE.en} />;
       }
-      case 'price': {
+      case INPUT_FIELD.PRICE: {
         return 'price';
       }
-      case 'guests': {
+      case INPUT_FIELD.GUESTS: {
         return 'guests';
       }
       default:
@@ -36,10 +37,12 @@ const Modal = () => {
     }
   };
 
+  const modalContents = getModalContents();
+
   return (
     <ModalPortal>
       <S.BackgroundLayer onClick={closeModal} />
-      <S.ModalContainer>{modalContents()}</S.ModalContainer>
+      <S.ModalContainer>{modalContents}</S.ModalContainer>
     </ModalPortal>
   );
 };

@@ -8,4 +8,11 @@ const LANGUAGE = {
   en: 'en',
 };
 
-export { SIZE, LANGUAGE };
+const INPUT_FIELD = {
+  CHECK_IN: 'checkIn',
+  CHECK_OUT: 'checkOut',
+  PRICE: 'price',
+  GUESTS: 'guests',
+};
+
+export { SIZE, LANGUAGE, INPUT_FIELD };
