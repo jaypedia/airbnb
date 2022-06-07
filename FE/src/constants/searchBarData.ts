@@ -1,13 +1,13 @@
 export default [
   {
     id: 1,
-    field: 'dates',
+    field: 'checkIn',
     title: '체크인',
     placeholder: '날짜 입력',
   },
   {
     id: 2,
-    field: 'dates',
+    field: 'checkOut',
     title: '체크아웃',
     placeholder: '날짜 입력',
   },
