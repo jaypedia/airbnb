@@ -46,4 +46,19 @@ const getYearMonthText = (language, monthIdx, year) => {
     : `${thisYear}년 ${MONTH_NAME[thisMonthIdx][language]}`;
 };
 
-export { getMonthArr, getSliderMonthData, getYearMonthText };
+const checkDateIsPast = ({ year, monthIdx, date, today }) => {
+  const thisDate = new Date(year, monthIdx, date);
+  return today > thisDate;
+};
+
+const getKoreanMonthDateString = (date, monthIdx) => {
+  return `${monthIdx + 1}월 ${date}일`;
+};
+
+export {
+  getMonthArr,
+  getSliderMonthData,
+  getYearMonthText,
+  checkDateIsPast,
+  getKoreanMonthDateString,
+};
