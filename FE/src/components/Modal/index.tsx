@@ -3,6 +3,8 @@ import reactDom from 'react-dom';
 import * as S from './Modal.style';
 
 import Calendar from '@/components/Calendar';
+import GuestSelector from '@/components/GuestSelector';
+import RangeSlider from '@/components/RangeSlider';
 import { ACTION } from '@/constants/actions';
 import { LANGUAGE, INPUT_FIELD } from '@/constants/constant';
 import { useSearchUIState, useSearchUIDispatch } from '@/context';
@@ -27,10 +29,10 @@ const Modal = () => {
         return <Calendar language={LANGUAGE.en} />;
       }
       case INPUT_FIELD.PRICE: {
-        return 'price';
+        return <RangeSlider />;
       }
       case INPUT_FIELD.GUESTS: {
-        return 'guests';
+        return <GuestSelector />;
       }
       default:
         console.log('Invaild currentField');
