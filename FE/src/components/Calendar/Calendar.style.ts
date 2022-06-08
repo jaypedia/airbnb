@@ -13,7 +13,7 @@ const CalendarContainer = styled.div`
 
 const MonthsContainer = styled.div`
   ${mixins.flexBox({ alignItems: 'flex-start' })}
-  transition: all 0.5s ease;
+  transition: ${({ transition }) => transition};
   transform: ${({ slide }) => `translateX(${slide}px)`};
   height: 100%;
 `;

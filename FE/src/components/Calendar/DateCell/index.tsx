@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 
 import * as S from './DateCell.style';
 
@@ -14,20 +14,12 @@ const DateCell = ({ date, monthIdx }) => {
   const isThisDatePast = checkDateIsPast({ year, monthIdx, date, today });
   const checkInOutString = getKoreanMonthDateString(date, monthIdx);
 
-  const [isCheckIn, setIsCheckIn] = useState(false);
-  const [isCheckOut, setIsCheckOut] = useState(false);
-
-  const handleDateClick = () => {
-    // TODO: 로직 구현
-  };
-
   return (
     <S.DateCell
       isPast={isThisDatePast}
       isBlank={!date}
-      onClick={handleDateClick}
-      isCheckIn={isCheckIn}
-      isCheckOut={isCheckOut}
+      isCheckIn={checkIn.kr !== checkOut.kr && checkIn.kr === checkInOutString}
+      isCheckOut={checkIn.kr !== checkOut.kr && checkOut.kr === checkInOutString}
     >
       {!isThisDatePast && date ? <DatePicker date={date} monthIdx={monthIdx} /> : date}
     </S.DateCell>

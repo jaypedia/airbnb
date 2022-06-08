@@ -23,7 +23,7 @@ const YearMonthText = styled.h2`
 `;
 
 const DateTable = styled.table`
-  border-spacing: 0 3px;
+  border-spacing: 0 2px;
 `;
 
 const DateTableBody = styled.tbody``;

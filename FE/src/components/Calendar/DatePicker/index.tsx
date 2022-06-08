@@ -21,6 +21,8 @@ const DatePicker = ({ date, monthIdx }) => {
   const searchUIDispatch = useSearchUIDispatch();
   const checkInOutString = getKoreanMonthDateString(date, monthIdx);
   const dateObj = new Date(year, monthIdx, date);
+  const currentDate = dateObj.getDate();
+  const lastDate = new Date(year, monthIdx + 1, 0).getDate();
 
   const handleClick = () => {
     const field =
@@ -54,9 +56,17 @@ const DatePicker = ({ date, monthIdx }) => {
     return checkIn.dateObj < dateObj && checkOut.dateObj > dateObj;
   };
 
+  const isBetween = checkBetween();
+
   return (
     <S.DatePicker onClick={handleClick} selected={checkSelectedDate()}>
-      <S.DateTextBox isBetween={checkBetween()}>{date}</S.DateTextBox>
+      <S.DateTextBox
+        isBetween={isBetween}
+        isFirstDate={isBetween && date === 1}
+        isLastDate={isBetween && currentDate === lastDate}
+      >
+        {date}
+      </S.DateTextBox>
     </S.DatePicker>
   );
 };
