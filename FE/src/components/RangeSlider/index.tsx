@@ -23,6 +23,11 @@ const RangeSlider = () => {
   const rangeMin = priceData.prices ? result.rangeMin : null;
   const rangeMax = priceData.prices ? result.rangeMax : null;
   const rangeGap = priceData.prices ? result.rangeGap : null;
+
+  for (const key in rangePriceCntObj) {
+    resultArr.push(rangePriceCntObj[key]);
+  }
+
   const graphBars = resultArr.map((el, idx) => {
     const isInRange =
       idx * rangeGap + rangeMin >= rangePrice[0] && idx * rangeGap + rangeMin < rangePrice[1];
@@ -40,22 +45,19 @@ const RangeSlider = () => {
     }
   };
 
-  for (const key in rangePriceCntObj) {
-    resultArr.push(rangePriceCntObj[key]);
-  }
-
   useEffect(() => {
     updateData(setPriceDataLoading, searchBarData.getRangePriceData, setPriceData);
   }, []);
 
+  console.log(graphBars);
+
   return (
-    <Box sx={{ width: 500 }}>
-      <Typography variant="h6" component="span" my={4}>
+    <Box sx={{ width: 500, height: 200, margin: 5 }}>
+      <Typography variant="h6" component="span">
         가격범위
       </Typography>
       <S.GraphBox>{graphBars}</S.GraphBox>
       <AirbnbSlider
-        // valueLabelDisplay="auto"
         max={rangeMax}
         min={rangeMin}
         value={rangePrice}
