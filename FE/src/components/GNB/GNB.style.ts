@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+
 import styled from 'styled-components';
 
 import { shadow } from '@/styles/commonStyle';
@@ -23,7 +24,7 @@ const gnbPadding = {
 
 const GNBWrapper = styled.div`
   ${mixins.flexBox({ justifyContent: 'space-between' })};
-  padding: ${({ currentStyle }) => gnbPadding[currentStyle]};
+  padding: ${({ size }) => gnbPadding[size]};
   height: 94px;
 `;
 

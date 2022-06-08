@@ -16,9 +16,6 @@ const initialState = {
     children: 0,
     infants: 0,
   },
-  currentField: null,
-  isActivated: false,
-  modalOn: false,
 };
 
 const SearchStateContext = createContext(null);
@@ -42,26 +39,6 @@ const useSearchDispatch = () => {
 
 const searchReducer = (state, action) => {
   switch (action.type) {
-    case ACTION.FOCUS_FIELD: {
-      return {
-        ...state,
-        isActivated: true,
-        modalOn: true,
-      };
-    }
-    case ACTION.CLICK_FIELD: {
-      const { currentField } = action.payload;
-      return {
-        ...state,
-        currentField,
-      };
-    }
-    case ACTION.BLUR_FIELD: {
-      return { ...state, isActivated: false };
-    }
-    case ACTION.CLOSE_MODAL: {
-      return { ...state, modalOn: false };
-    }
     case ACTION.SELECT_DATES: {
       const { inputValue } = action.payload;
       return {
