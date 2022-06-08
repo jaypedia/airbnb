@@ -48,6 +48,9 @@ const getYearMonthText = (language, monthIdx, year) => {
 
 const checkDateIsPast = ({ year, monthIdx, date, today }) => {
   const thisDate = new Date(year, monthIdx, date);
+  if (today.toString().slice(0, 10) === thisDate.toString().slice(0, 10)) {
+    return false;
+  }
   return today > thisDate;
 };
 
