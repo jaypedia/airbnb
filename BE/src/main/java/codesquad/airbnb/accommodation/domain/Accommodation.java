@@ -3,10 +3,7 @@ package codesquad.airbnb.accommodation.domain;
 import codesquad.airbnb.booking.domain.Booking;
 import codesquad.airbnb.exception.TooManyImageException;
 import codesquad.airbnb.review.domain.Review;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -17,6 +14,7 @@ import static javax.persistence.FetchType.LAZY;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@ToString(of = {"id", "name", "description", "limitGuestCount", "pricePerDate", "location", "facility"})
 @Table(name = "accommodation")
 public class Accommodation {
 

@@ -10,6 +10,7 @@ import static javax.persistence.FetchType.*;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @EqualsAndHashCode
+@ToString
 public class AccommodationImage {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
