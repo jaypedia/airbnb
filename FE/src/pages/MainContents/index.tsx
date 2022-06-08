@@ -5,6 +5,7 @@ import { Skeleton, Stack, Typography, Grid, Box } from '@mui/material';
 import mainContentsData from '@/apis/mainContents';
 import AlbumItem from '@/components/common/AlbumItem';
 import ListItem from '@/components/common/ListItem';
+import RangeSlider from '@/components/RangeSlider';
 import * as S from '@/pages/MainContents/MainContents.style';
 import updateData from '@/utils/updateData';
 
@@ -25,7 +26,7 @@ const MainContent = () => {
   }, []);
 
   const listItems = nearDestData?.map(listItem => (
-    <Grid item xs={3}>
+    <Grid item xs={3} key={listItem.id}>
       {nearDestDataLoading ? (
         <Stack direction="row" spacing={1}>
           <Skeleton variant="rectangular" width={80} height={80} animation="wave" />
@@ -41,7 +42,7 @@ const MainContent = () => {
   ));
 
   const albumItems = recommendablePlaceData?.map(albumItem => (
-    <Grid item xs={3}>
+    <Grid item xs={3} key={albumItem.id}>
       {recommendablePlaceDataLoading ? (
         <Stack spacing={2}>
           <Skeleton variant="rectangular" width={280} height={280} animation="wave" />

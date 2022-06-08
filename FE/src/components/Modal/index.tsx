@@ -1,5 +1,6 @@
 import reactDom from 'react-dom';
 
+import RangeSlider from '../RangeSlider';
 import * as S from './Modal.style';
 
 import Calendar from '@/components/Calendar';
