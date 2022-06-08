@@ -1,26 +1,56 @@
+import { createContext, useState, useEffect, useMemo } from 'react';
+
+import ArrowButtons from './ArrowButtons';
 import * as S from './Calendar.style';
-import Days from './Days';
+import DaysOfTheWeek from './DaysOfTheWeek';
 import Month from './Month';
 
-import { LANGUAGE } from '@/constants/constant';
-import { getMonthArr } from '@/utils/calendar';
+import { MONTH_WIDTH_PX } from '@/constants/calendar';
+import { getSliderMonthData } from '@/utils/calendar';
 
-const Calendar = () => {
+export const CalendarContext = createContext(null);
+
+const Calendar = ({ language }) => {
   const today = new Date();
   const year = today.getFullYear();
-  const monthIdx1 = today.getMonth();
-  const monthIdx2 = today.getMonth() + 1;
+  const value = useMemo(() => ({ language, today, year }), []);
 
-  const monthData1 = getMonthArr(year, monthIdx1);
-  const monthData2 = getMonthArr(year, monthIdx2);
+  const [slide, setSlide] = useState(-MONTH_WIDTH_PX);
+  const [monthIdx, setMonthIdx] = useState(today.getMonth() - 1);
+  const [monthData, setMonthData] = useState(getSliderMonthData(year, monthIdx));
+
+  const handleBackClick = () => {
+    setSlide(slide + MONTH_WIDTH_PX);
+    setMonthIdx(monthIdx - 1);
+    setMonthData(getSliderMonthData(year, monthIdx - 1));
+  };
+
+  const handleForwardClick = () => {
+    setSlide(slide - MONTH_WIDTH_PX);
+    setMonthIdx(monthIdx + 1);
+    setMonthData(getSliderMonthData(year, monthIdx + 1));
+  };
+
+  // TODO: Slider 로직 수정
+  useEffect(() => {
+    setTimeout(() => {
+      setSlide(-MONTH_WIDTH_PX);
+    }, 0);
+  }, [slide]);
 
   return (
-    <S.CalendarContainer>
-      <Days language={LANGUAGE.en} />
-      <Days language={LANGUAGE.en} isRight />
-      <Month language={LANGUAGE.en} monthData={monthData1} monthIdx={monthIdx1} year={year} />
-      <Month language={LANGUAGE.en} monthData={monthData2} monthIdx={monthIdx2} year={year} />
-    </S.CalendarContainer>
+    <CalendarContext.Provider value={value}>
+      <S.CalendarContainer>
+        <DaysOfTheWeek />
+        <DaysOfTheWeek isRight />
+        <ArrowButtons onBackClick={handleBackClick} onForwardClick={handleForwardClick} />
+        <S.MonthsContainer slide={slide}>
+          {monthData.map((data, index) => (
+            <Month key={String(index)} monthData={data} monthIdx={monthIdx + index} year={year} />
+          ))}
+        </S.MonthsContainer>
+      </S.CalendarContainer>
+    </CalendarContext.Provider>
   );
 };
 

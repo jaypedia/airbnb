@@ -23,4 +23,6 @@ const DAY_NAME = [
   { id: 'Sa', kr: '토', en: 'Sa' },
 ];
 
-export { MONTH_NAME, DAY_NAME };
+const MONTH_WIDTH_PX = 390;
+
+export { MONTH_NAME, DAY_NAME, MONTH_WIDTH_PX };

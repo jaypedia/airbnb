@@ -3,25 +3,33 @@ import reactDom from 'react-dom';
 import * as S from './Modal.style';
 
 import Calendar from '@/components/Calendar';
-import { useSearchState } from '@/context/SearchProvider';
+import { ACTION } from '@/constants/actions';
+import { LANGUAGE, INPUT_FIELD } from '@/constants/constant';
+import { useSearchUIState, useSearchUIDispatch } from '@/context';
 
 const ModalPortal = ({ children }) => {
   const el = document.getElementById('modal');
   return reactDom.createPortal(children, el);
 };
 
-const Modal = ({ onClose }) => {
-  const { currentField } = useSearchState();
+const Modal = () => {
+  const { currentField } = useSearchUIState();
+  const dispatch = useSearchUIDispatch();
 
-  const modalContents = () => {
+  const closeModal = () => {
+    dispatch({ type: ACTION.CLOSE_MODAL });
+  };
+
+  const getModalContents = () => {
     switch (currentField) {
-      case 'dates': {
-        return <Calendar />;
+      case INPUT_FIELD.CHECK_IN:
+      case INPUT_FIELD.CHECK_OUT: {
+        return <Calendar language={LANGUAGE.en} />;
       }
-      case 'price': {
+      case INPUT_FIELD.PRICE: {
         return 'price';
       }
-      case 'guests': {
+      case INPUT_FIELD.GUESTS: {
         return 'guests';
       }
       default:
@@ -29,10 +37,12 @@ const Modal = ({ onClose }) => {
     }
   };
 
+  const modalContents = getModalContents();
+
   return (
     <ModalPortal>
-      <S.BackgroundLayer onClick={onClose} />
-      <S.ModalContainer>{modalContents()}</S.ModalContainer>
+      <S.BackgroundLayer onClick={closeModal} />
+      <S.ModalContainer>{modalContents}</S.ModalContainer>
     </ModalPortal>
   );
 };

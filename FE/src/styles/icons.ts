@@ -1,7 +1,10 @@
 import { FaAirbnb, FaUserCircle } from 'react-icons/fa';
 import { FiMenu, FiSearch } from 'react-icons/fi';
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { MdCancel } from 'react-icons/md';
 import styled from 'styled-components';
+
+import { theme } from './theme';
 
 const User = styled(FaUserCircle)`
   color: ${({ theme: { color } }) => color.grey3};
@@ -28,6 +31,10 @@ const Cancel = styled(MdCancel)`
   top: 50%;
   right: ${({ $isLast }) => ($isLast ? '125px' : '15px')};
   transform: translateY(-50%);
+
+  :hover {
+    color: ${({ theme: { color } }) => color.grey3};
+  }
 `;
 
 const Airbnb = styled(FaAirbnb)`
@@ -36,4 +43,25 @@ const Airbnb = styled(FaAirbnb)`
   color: ${({ theme: { color } }) => color.pink};
 `;
 
-export { User, Menu, Search, Cancel, Airbnb };
+const arrowStyle = `
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+  color: ${theme.color.grey3};
+  cursor: pointer;
+
+  :hover {
+    background-color: ${theme.color.grey6};
+    border-radius: 50%;
+  }
+`;
+
+const ArrowBack = styled(IoIosArrowBack)`
+  ${arrowStyle}
+`;
+
+const ArrowForward = styled(IoIosArrowForward)`
+  ${arrowStyle}
+`;
+
+export { User, Menu, Search, Cancel, Airbnb, ArrowBack, ArrowForward };

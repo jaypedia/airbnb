@@ -11,4 +11,11 @@ const CalendarContainer = styled.div`
   margin: 50px 60px;
 `;
 
-export { CalendarContainer };
+const MonthsContainer = styled.div`
+  ${mixins.flexBox({ alignItems: 'flex-start' })}
+  transition: all 0.5s ease;
+  transform: ${({ slide }) => `translateX(${slide}px)`};
+  height: 100%;
+`;
+
+export { CalendarContainer, MonthsContainer };

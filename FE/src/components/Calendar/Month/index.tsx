@@ -1,32 +1,28 @@
+import { useContext } from 'react';
+
 import * as S from './Month.style';
 
-import { MONTH_NAME } from '@/constants/calendar';
-import { LANGUAGE } from '@/constants/constant';
+import { CalendarContext } from '@/components/Calendar';
+import Week from '@/components/Calendar/Week';
+import { getYearMonthText } from '@/utils/calendar';
 
-const Month = ({ language, monthData, monthIdx, year }) => {
-  const getYearMonthText = () => {
-    return language === LANGUAGE.en
-      ? `${MONTH_NAME[monthIdx][language]} ${year}`
-      : `${year}년 ${MONTH_NAME[monthIdx][language]}`;
-  };
+const Month = ({ monthData, monthIdx, year }) => {
+  const { language } = useContext(CalendarContext);
+  const yearMonthText = getYearMonthText(language, monthIdx, year);
 
   return (
-    <S.MonthContainer>
+    <S.MonthWrapper>
       <S.YearMonthTextWrapper>
-        <S.YearMonthText>{getYearMonthText()}</S.YearMonthText>
+        <S.YearMonthText>{yearMonthText}</S.YearMonthText>
       </S.YearMonthTextWrapper>
       <S.DateTable>
         <S.DateTableBody>
-          {monthData.map(week => (
-            <S.WeekRow key={String(week)}>
-              {week.map(date => (
-                <S.DateCell key={String(date)}>{date}</S.DateCell>
-              ))}
-            </S.WeekRow>
+          {monthData.map((week, index) => (
+            <Week key={String(index)} week={week} monthIdx={monthIdx} />
           ))}
         </S.DateTableBody>
       </S.DateTable>
-    </S.MonthContainer>
+    </S.MonthWrapper>
   );
 };
 

@@ -88,11 +88,16 @@ const SearchTitle = styled.p`
 
 const SearchInput = styled.input`
   font-size: ${({ theme: { fontSize } }) => fontSize.small};
-  font-weight: ${({ theme: { fontWeight } }) => fontWeight.regular};
-  color: ${({ theme: { color } }) => color.grey2};
+  font-weight: ${({ theme: { fontWeight } }) => fontWeight.bold};
+  color: ${({ theme: { color } }) => color.black};
   line-height: 23px;
   text-transform: uppercase;
   cursor: pointer;
+
+  ::placeholder {
+    color: ${({ theme: { color } }) => color.grey2};
+    font-weight: ${({ theme: { fontWeight } }) => fontWeight.regular};
+  }
 `;
 
 const SearchTitleInputWrapper = styled.div`
