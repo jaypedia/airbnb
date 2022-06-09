@@ -16,26 +16,28 @@ const Calendar = ({ language }) => {
   const year = today.getFullYear();
   const value = useMemo(() => ({ language, today, year }), []);
 
-  const [slide, setSlide] = useState(-MONTH_WIDTH_PX);
+  const [translateX, setTranslateX] = useState(-MONTH_WIDTH_PX);
   const [monthIdx, setMonthIdx] = useState(today.getMonth() - 1);
   const [monthData, setMonthData] = useState(getSliderMonthData(year, monthIdx));
   const [transition, setTransition] = useState(TRANSITION_EFFECT);
   const [isForwardClicked, setIsForwardClicked] = useState(false);
 
   const handleBackClick = () => {
-    setSlide(slide + MONTH_WIDTH_PX);
+    if (translateX > -MONTH_WIDTH_PX) return;
+    setTranslateX(translateX + MONTH_WIDTH_PX);
     setTransition(TRANSITION_EFFECT);
     setIsForwardClicked(false);
   };
 
   const handleForwardClick = () => {
-    setSlide(slide - MONTH_WIDTH_PX);
+    if (translateX < -MONTH_WIDTH_PX) return;
+    setTranslateX(translateX - MONTH_WIDTH_PX);
     setTransition(TRANSITION_EFFECT);
     setIsForwardClicked(true);
   };
 
   const handleTransitionEnd = () => {
-    setSlide(-MONTH_WIDTH_PX);
+    setTranslateX(-MONTH_WIDTH_PX);
     setTransition(null);
 
     if (isForwardClicked) {
@@ -54,7 +56,7 @@ const Calendar = ({ language }) => {
         <DaysOfTheWeek isRight />
         <ArrowButtons onBackClick={handleBackClick} onForwardClick={handleForwardClick} />
         <S.MonthsContainer
-          slide={slide}
+          translateX={translateX}
           transition={transition}
           onTransitionEnd={handleTransitionEnd}
         >
