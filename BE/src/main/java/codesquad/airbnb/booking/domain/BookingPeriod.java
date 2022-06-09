@@ -1,7 +1,10 @@
 package codesquad.airbnb.booking.domain;
 
 import codesquad.airbnb.exception.InvalidPeriodException;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -48,11 +51,14 @@ public class BookingPeriod {
         return ChronoUnit.WEEKS.between(checkinDate, checkoutDate);
     }
 
-    public boolean hasCommonDate(BookingPeriod otherPeriod) {
+    /**
+     * 지정 기간에 겹치는 날짜가 존재하는지 여부 반환
+     */
+    public boolean hasDuplicateDateWith(BookingPeriod otherPeriod) {
         LocalDate otherCheckInDate = otherPeriod.checkinDate;
         LocalDate otherCheckOutDate = otherPeriod.checkoutDate;
 
-        if (otherCheckInDate.isAfter(checkoutDate) || otherCheckOutDate.isBefore(checkinDate)) {
+        if (otherCheckInDate.isAfter(this.checkoutDate) || otherCheckOutDate.isBefore(this.checkinDate)) {
             return false;
         }
         return true;

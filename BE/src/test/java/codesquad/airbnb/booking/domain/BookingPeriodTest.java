@@ -82,8 +82,8 @@ class BookingPeriodTest {
     }
 
     @Test
-    @DisplayName("hasCommonDate는 다른 BookingPeriod와 겹치는 날짜가 있을 경우 true를 반환한다.")
-    public void hasCommonDate_True_Test() {
+    @DisplayName("hasDuplicateDate는 다른 BookingPeriod와 겹치는 날짜가 있을 경우 true를 반환한다.")
+    public void hasDuplicateDate_True_Test() {
         //given
         LocalDate checkinDate1 = LocalDate.now().plusDays(1);
         LocalDate checkoutDate1 = LocalDate.now().plusDays(2);
@@ -95,10 +95,10 @@ class BookingPeriodTest {
         BookingPeriod bookingPeriod2 = BookingPeriod.between(checkinDate2,checkoutDate2);
 
         //when
-        boolean hasCommonDate = bookingPeriod1.hasCommonDate(bookingPeriod2);
+        boolean hasDuplicateDate = bookingPeriod1.hasDuplicateDateWith(bookingPeriod2);
 
         //then
-        assertThat(hasCommonDate).isTrue();
+        assertThat(hasDuplicateDate).isTrue();
     }
 
     @Test
@@ -115,10 +115,10 @@ class BookingPeriodTest {
         BookingPeriod bookingPeriod2 = BookingPeriod.between(checkinDate2,checkoutDate2);
 
         //when
-        boolean hasCommonDate = bookingPeriod1.hasCommonDate(bookingPeriod2);
+        boolean hasDuplicateDate = bookingPeriod1.hasDuplicateDateWith(bookingPeriod2);
 
         //then
-        assertThat(hasCommonDate).isFalse();
+        assertThat(hasDuplicateDate).isFalse();
     }
 
 }
