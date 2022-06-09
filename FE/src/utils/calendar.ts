@@ -64,6 +64,10 @@ const getEnglishMonthDateString = (date, monthIdx) => {
   return `${MONTH_NAME[month].slice(0, 3)} ${date}`;
 };
 
+const getLanguageButtonString = (language: string) => {
+  return language.slice(0, 2).toUpperCase();
+};
+
 export {
   getMonthArr,
   getSliderMonthData,
@@ -71,4 +75,5 @@ export {
   checkDateIsPast,
   getKoreanMonthDateString,
   getEnglishMonthDateString,
+  getLanguageButtonString,
 };
