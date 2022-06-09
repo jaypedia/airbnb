@@ -31,7 +31,7 @@ const RangeSlider = () => {
 
   const graphBars = resultArr.map((el, idx) => {
     const isInRange =
-      idx * rangeGap + rangeMin >= rangePrice[0] && idx * rangeGap + rangeMin < rangePrice[1];
+      idx * rangeGap + rangeMin >= rangePrice[0] && idx * rangeGap + rangeMin <= rangePrice[1];
     return <S.GraphBar barHeight={el} isInRange={isInRange} key={idx} />;
   });
 
@@ -59,7 +59,6 @@ const RangeSlider = () => {
         </Typography>
         <Typography variant="subtitle1" component="span" color="gray">
           {`평균 1박 요금은 ₩${rangeAvg.toLocaleString()} 입니다.`}
-          {/* TODO: locale 붙여야함 */}
         </Typography>
       </Stack>
       <S.GraphBox>{graphBars}</S.GraphBox>
