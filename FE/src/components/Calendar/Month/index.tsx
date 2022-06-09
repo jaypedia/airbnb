@@ -1,14 +1,13 @@
 /* eslint-disable react/no-array-index-key */
-import { useContext } from 'react';
 
 import * as S from './Month.style';
 
-import { CalendarContext } from '@/components/Calendar';
 import Week from '@/components/Calendar/Week';
+import { useCalendarState } from '@/context';
 import { getYearMonthText } from '@/utils/calendar';
 
-const Month = ({ monthData, monthIdx, year }) => {
-  const { language } = useContext(CalendarContext);
+const Month = ({ monthData, monthIdx }) => {
+  const { language, year } = useCalendarState();
   const yearMonthText = getYearMonthText(language, monthIdx, year);
 
   return (
