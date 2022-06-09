@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import { useContext } from 'react';
 
 import * as S from './Month.style';
