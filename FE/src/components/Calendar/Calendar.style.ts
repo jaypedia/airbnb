@@ -3,11 +3,17 @@ import styled from 'styled-components';
 import { mixins } from '@/styles/mixins';
 
 const CalendarContainer = styled.div`
+  ${mixins.flexBox({ direction: 'column', justifyContent: 'space-between' })}
+  width: 800px;
+  position: relative;
+  margin: 50px 60px;
+`;
+
+const CalendarCarouselContainer = styled.div`
   ${mixins.flexBox({ justifyContent: 'space-between' })}
   width: 800px;
   overflow: hidden;
   position: relative;
-  margin: 50px 60px;
 `;
 
 const MonthsContainer = styled.div`
@@ -17,4 +23,4 @@ const MonthsContainer = styled.div`
   height: 100%;
 `;
 
-export { CalendarContainer, MonthsContainer };
+export { CalendarContainer, CalendarCarouselContainer, MonthsContainer };
