@@ -6,6 +6,4 @@ const ActivatedInputShadow = `
     box-shadow: rgb(0 0 0 / 25%) 0px 5px 20px 1px;
 `;
 
-const TRANSITION_EFFECT = 'all 0.5s ease';
-
-export { shadow, ActivatedInputShadow, TRANSITION_EFFECT };
+export { shadow, ActivatedInputShadow };
