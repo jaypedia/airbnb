@@ -1,10 +1,11 @@
 import * as S from './ArrowButtons.style';
 
 import { ACTION } from '@/constants/actions';
-import { useCalendarDispatch } from '@/context';
+import { useCalendarState, useCalendarDispatch } from '@/context';
 import * as I from '@/styles/icons';
 
 const ArrowButtons = () => {
+  const { monthCount } = useCalendarState();
   const dispatch = useCalendarDispatch();
 
   const handleBackClick = () => {
@@ -20,7 +21,7 @@ const ArrowButtons = () => {
   };
 
   return (
-    <S.BtnContainer>
+    <S.BtnContainer monthCount={monthCount}>
       <I.ArrowBack onClick={handleBackClick} />
       <I.ArrowForward onClick={handleForwardClick} />
     </S.BtnContainer>

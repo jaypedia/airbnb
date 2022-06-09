@@ -2,14 +2,15 @@
 import ArrowButtons from './ArrowButtons';
 import * as S from './Calendar.style';
 import DaysOfTheWeek from './DaysOfTheWeek';
-import LanguageButton from './LanguageButton';
 import Month from './Month';
+import OptionButton from './OptionButton';
 
 import { ACTION } from '@/constants/actions';
 import { useCalendarDispatch, useCalendarState } from '@/context';
 
 const Calendar = () => {
-  const { translateX, transition, monthData, monthIdx, isForwardClicked } = useCalendarState();
+  const { translateX, transition, monthData, monthIdx, isForwardClicked, monthCount } =
+    useCalendarState();
 
   const dispatch = useCalendarDispatch();
 
@@ -26,10 +27,10 @@ const Calendar = () => {
   };
 
   return (
-    <S.CalendarContainer>
-      <S.CalendarCarouselContainer>
+    <S.CalendarContainer monthCount={monthCount}>
+      <S.CalendarCarouselContainer monthCount={monthCount}>
         <DaysOfTheWeek />
-        <DaysOfTheWeek isRight />
+        {monthCount === 2 && <DaysOfTheWeek isRight />}
         <ArrowButtons />
         <S.MonthsContainer
           translateX={translateX}
@@ -41,7 +42,7 @@ const Calendar = () => {
           ))}
         </S.MonthsContainer>
       </S.CalendarCarouselContainer>
-      <LanguageButton />
+      <OptionButton />
     </S.CalendarContainer>
   );
 };

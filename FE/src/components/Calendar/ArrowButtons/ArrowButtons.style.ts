@@ -4,7 +4,7 @@ import { mixins } from '@/styles/mixins';
 
 const BtnContainer = styled.div`
   ${mixins.flexBox({ justifyContent: 'space-between' })}
-  width: 800px;
+  width: ${({ monthCount }) => (monthCount === 2 ? '800px' : '400px')};
   height: 0;
   position: absolute;
   top: 20px;

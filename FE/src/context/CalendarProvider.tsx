@@ -14,6 +14,7 @@ const initialState = {
   translateX: -MONTH_WIDTH_PX,
   transition: TRANSITION_EFFECT,
   isForwardClicked: false,
+  monthCount: 2,
 };
 
 const CalendarStateContext = createContext(null);
@@ -91,6 +92,20 @@ const calendarReducer = (state, action) => {
       return {
         ...state,
         language: LANGUAGE.en,
+      };
+    }
+    case ACTION.CHANGE_MONTH_COUNT: {
+      const { monthCount } = state;
+      if (monthCount === 2) {
+        return {
+          ...state,
+          monthCount: 1,
+        };
+      }
+
+      return {
+        ...state,
+        monthCount: 2,
       };
     }
     default:

@@ -4,14 +4,14 @@ import { mixins } from '@/styles/mixins';
 
 const CalendarContainer = styled.div`
   ${mixins.flexBox({ direction: 'column', justifyContent: 'space-between' })}
-  width: 800px;
+  width: ${({ monthCount }) => (monthCount === 2 ? '800px' : '400px')};
   position: relative;
   margin: 50px 60px;
 `;
 
 const CalendarCarouselContainer = styled.div`
   ${mixins.flexBox({ justifyContent: 'space-between' })}
-  width: 800px;
+  width: ${({ monthCount }) => (monthCount === 2 ? '800px' : '400px')};
   overflow: hidden;
   position: relative;
 `;
