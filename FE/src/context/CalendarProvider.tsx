@@ -5,17 +5,20 @@ import { MONTH_WIDTH_PX, TRANSITION_EFFECT } from '@/constants/calendar';
 import { LANGUAGE } from '@/constants/constant';
 import { getSliderMonthData } from '@/utils/calendar';
 
-const initialState = {
-  language: LANGUAGE.en,
-  today: new Date(),
-  year: new Date().getFullYear(),
-  monthIdx: new Date().getMonth() - 1,
-  monthData: getSliderMonthData(new Date().getFullYear(), new Date().getMonth() - 1),
-  translateX: -MONTH_WIDTH_PX,
-  transition: TRANSITION_EFFECT,
-  isForwardClicked: false,
-  monthCount: 2,
-};
+const initialState = (() => {
+  const today = new Date();
+  return {
+    language: LANGUAGE.en,
+    today,
+    year: today.getFullYear(),
+    monthIdx: today.getMonth() - 1,
+    monthData: getSliderMonthData(today.getFullYear(), today.getMonth() - 1),
+    translateX: -MONTH_WIDTH_PX,
+    transition: TRANSITION_EFFECT,
+    isForwardClicked: false,
+    monthCount: 2,
+  };
+})();
 
 const CalendarStateContext = createContext(null);
 const CalendarDispatchContext = createContext(null);
