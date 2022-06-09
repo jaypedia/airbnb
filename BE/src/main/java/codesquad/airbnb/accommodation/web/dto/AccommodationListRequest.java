@@ -5,29 +5,46 @@ import lombok.Getter;
 import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Getter
 @ToString
 public class AccommodationListRequest {
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @NotNull @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate checkinDate;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @NotNull @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate checkoutDate;
 
+    @Min(0)
     private Integer minPricePerDate;
+
+    @Min(0)
     private Integer maxPricePerDate;
 
+    @Min(-90) @Max(90)
     private Double minLatitude;
+
+    @Min(-90) @Max(90)
     private Double maxLatitude;
 
+    @Min(-180) @Max(180)
     private Double minLongitude;
+
+    @Min(-180) @Max(180)
     private Double maxLongitude;
 
+    @NotNull @Min(1)
     private Integer adultCount;
+
+    @Min(0)
     private Integer kidCount;
+
+    @Min(0)
     private Integer infantCount;
 
     @Builder
