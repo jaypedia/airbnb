@@ -55,7 +55,13 @@ const checkDateIsPast = ({ year, monthIdx, date, today }) => {
 };
 
 const getKoreanMonthDateString = (date, monthIdx) => {
-  return `${monthIdx + 1}월 ${date}일`;
+  const month = (monthIdx % 12) + 1;
+  return `${month}월 ${date}일`;
+};
+
+const getEnglishMonthDateString = (date, monthIdx) => {
+  const month = monthIdx % 12;
+  return `${MONTH_NAME[month].slice(0, 3)} ${date}`;
 };
 
 export {
@@ -64,4 +70,5 @@ export {
   getYearMonthText,
   checkDateIsPast,
   getKoreanMonthDateString,
+  getEnglishMonthDateString,
 };
