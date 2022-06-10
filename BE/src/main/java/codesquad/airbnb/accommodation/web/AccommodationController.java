@@ -1,6 +1,7 @@
 package codesquad.airbnb.accommodation.web;
 
 import codesquad.airbnb.accommodation.domain.Accommodation;
+import codesquad.airbnb.accommodation.dto.AccommodationSearchCondition;
 import codesquad.airbnb.accommodation.service.AccommodationCommandService;
 import codesquad.airbnb.accommodation.service.AccommodationQueryService;
 import codesquad.airbnb.accommodation.web.dto.*;
@@ -63,7 +64,13 @@ public class AccommodationController {
             return ResponseEntity.badRequest().body(allErrors);
         }
 
-        log.info("list Request = {}", listRequest);
+        log.info("listRequest = {}", listRequest);
+        AccommodationSearchCondition searchCondition = listRequest.toSearchCondition();
+        log.info("searchCondition = {}", searchCondition);
+
+        // List<Accommodation> accommodations = accommodationQueryService.findAccommodations(searchCondition);
+        // AccommodationListResponse.create(accommodations);
+
         return ResponseEntity.ok(AccommodationListResponse.sampleApi(100));
     }
 }
