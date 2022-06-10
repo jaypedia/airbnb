@@ -1,5 +1,6 @@
 package codesquad.airbnb.accommodation.web.dto;
 
+import codesquad.airbnb.accommodation.domain.Accommodation;
 import lombok.Getter;
 
 import java.util.List;
@@ -24,4 +25,11 @@ public class AccommodationListResponse {
         return new AccommodationListResponse(numberOfSampleData, accommodationListElements);
     }
 
+    public static AccommodationListResponse create(List<Accommodation> accommodations) {
+        List<AccommodationListElement> listElements = accommodations.stream()
+                .map(AccommodationListElement::create)
+                .collect(Collectors.toList());
+
+        return new AccommodationListResponse(accommodations.size(), listElements);
+    }
 }
