@@ -8,6 +8,7 @@ const GraphBar = styled.div`
 `;
 
 const GraphBox = styled.div`
+  height: 100px;
   display: flex;
   align-items: flex-end;
   margin: 20px 0px;

@@ -11,7 +11,7 @@ const AirbnbSlider = styled(Slider)(({ theme }) => ({
     backgroundColor: '#fff',
     border: '1px solid currentColor',
     '&:hover': {
-      boxShadow: '0 0 0 8px rgba(238, 133, 137, 0.16)',
+      boxShadow: '0 0 0 8px rgba(100, 100, 100, 0.16)',
     },
     '& .airbnb-bar': {
       height: 9,
