@@ -1,5 +1,6 @@
 package codesquad.airbnb.accommodation.web.dto;
 
+import codesquad.airbnb.accommodation.dto.AccommodationSearchCondition;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
@@ -14,10 +15,12 @@ import java.time.LocalDate;
 @ToString
 public class AccommodationListRequest {
 
-    @NotNull @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate checkinDate;
 
-    @NotNull @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate checkoutDate;
 
     @Min(0)
@@ -26,26 +29,30 @@ public class AccommodationListRequest {
     @Min(0)
     private Integer maxPricePerDate;
 
-    @Min(-90) @Max(90)
+    @Min(-90)
+    @Max(90)
     private Double minLatitude;
 
-    @Min(-90) @Max(90)
+    @Min(-90)
+    @Max(90)
     private Double maxLatitude;
 
-    @Min(-180) @Max(180)
+    @Min(-180)
+    @Max(180)
     private Double minLongitude;
 
-    @Min(-180) @Max(180)
+    @Min(-180)
+    @Max(180)
     private Double maxLongitude;
 
-    @NotNull @Min(1)
-    private Integer adultCount;
+    @Min(1)
+    private int adultCount;
 
     @Min(0)
-    private Integer kidCount;
+    private int kidCount;
 
     @Min(0)
-    private Integer infantCount;
+    private int infantCount;
 
     @Builder
     public AccommodationListRequest(LocalDate checkinDate, LocalDate checkoutDate, Integer minPricePerDate, Integer maxPricePerDate, Double minLatitude, Double maxLatitude, Double minLongitude, Double maxLongitude, Integer adultCount, Integer kidCount, Integer infantCount) {
@@ -57,8 +64,27 @@ public class AccommodationListRequest {
         this.maxLatitude = maxLatitude;
         this.minLongitude = minLongitude;
         this.maxLongitude = maxLongitude;
-        this.adultCount = adultCount;
-        this.kidCount = kidCount;
-        this.infantCount = infantCount;
+        this.adultCount = (adultCount == null) ? 0 : adultCount;
+        this.kidCount = (kidCount == null) ? 0 : kidCount;
+        this.infantCount = (infantCount == null) ? 0 : infantCount;
+    }
+
+    public AccommodationSearchCondition toSearchCondition() {
+        return AccommodationSearchCondition
+                .builder()
+                .checkinDate(checkinDate)
+                .checkoutDate(checkoutDate)
+                .minPricePerDate(minPricePerDate)
+                .maxPricePerDate(maxPricePerDate)
+                .minLatitude(minLatitude)
+                .maxLatitude(maxLatitude)
+                .minLongitude(minLongitude)
+                .maxLongitude(maxLongitude)
+                .guestCount(guestTotalGuestCount(adultCount, kidCount, infantCount))
+                .build();
+    }
+
+    public int guestTotalGuestCount(Integer adultCount, Integer kidCount, Integer infantCount) {
+        return adultCount + kidCount + infantCount;
     }
 }
