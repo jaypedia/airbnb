@@ -10,6 +10,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.util.Optional;
 
 @Getter
 @ToString
@@ -64,9 +65,9 @@ public class AccommodationListRequest {
         this.maxLatitude = maxLatitude;
         this.minLongitude = minLongitude;
         this.maxLongitude = maxLongitude;
-        this.adultCount = (adultCount == null) ? 0 : adultCount;
-        this.kidCount = (kidCount == null) ? 0 : kidCount;
-        this.infantCount = (infantCount == null) ? 0 : infantCount;
+        this.adultCount = Optional.ofNullable(adultCount).orElse(0);
+        this.kidCount = Optional.ofNullable(kidCount).orElse(0);
+        this.infantCount = Optional.ofNullable(infantCount).orElse(0);
     }
 
     public AccommodationSearchCondition toSearchCondition() {
