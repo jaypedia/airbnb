@@ -1,3 +1,4 @@
+import { useCalendarState, useCalendarDispatch, CalendarProvider } from './CalendarProvider';
 import {
   useDatePickerState,
   useDatePickerDispatch,
@@ -17,7 +18,13 @@ const compose = providerArr => {
   });
 };
 
-const Providers = compose([SearchProvider, SearchUIProvider, StyleProvider, DatePickerProvider]);
+const Providers = compose([
+  SearchProvider,
+  SearchUIProvider,
+  StyleProvider,
+  DatePickerProvider,
+  CalendarProvider,
+]);
 
 export {
   useSearchState,
@@ -28,5 +35,7 @@ export {
   useStyleDispatch,
   useDatePickerState,
   useDatePickerDispatch,
+  useCalendarState,
+  useCalendarDispatch,
   Providers,
 };

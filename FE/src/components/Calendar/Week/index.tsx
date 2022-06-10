@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import * as S from './Week.style';
 
 import DateCell from '@/components/Calendar/DateCell';

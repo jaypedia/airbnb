@@ -1,12 +1,10 @@
-import { useContext } from 'react';
-
 import * as S from './DaysOfTheWeek.style';
 
-import { CalendarContext } from '@/components/Calendar';
 import { DAY_NAME } from '@/constants/calendar';
+import { useCalendarState } from '@/context';
 
 const DaysOfTheWeek = ({ isRight }) => {
-  const { language } = useContext(CalendarContext);
+  const { language } = useCalendarState();
 
   return (
     <S.DayList isRight={isRight}>

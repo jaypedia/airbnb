@@ -1,11 +1,9 @@
-import { useContext } from 'react';
-
 import * as S from './DatePicker.style';
 
-import { CalendarContext } from '@/components/Calendar';
 import { ACTION } from '@/constants/actions';
 import { INPUT_FIELD } from '@/constants/constant';
 import {
+  useCalendarState,
   useDatePickerDispatch,
   useDatePickerState,
   useSearchUIState,
@@ -15,7 +13,7 @@ import { getKoreanMonthDateString } from '@/utils/calendar';
 
 const DatePicker = ({ date, monthIdx }) => {
   const { checkIn, checkOut } = useDatePickerState();
-  const { year } = useContext(CalendarContext);
+  const { year } = useCalendarState();
   const { focusedField } = useSearchUIState();
   const datePickerdispatch = useDatePickerDispatch();
   const searchUIDispatch = useSearchUIDispatch();
