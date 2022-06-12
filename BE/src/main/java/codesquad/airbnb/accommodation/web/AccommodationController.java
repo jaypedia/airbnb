@@ -1,12 +1,16 @@
 package codesquad.airbnb.accommodation.web;
 
 import codesquad.airbnb.accommodation.domain.Accommodation;
+import codesquad.airbnb.accommodation.dto.AccommodationSearchCondition;
 import codesquad.airbnb.accommodation.service.AccommodationCommandService;
 import codesquad.airbnb.accommodation.service.AccommodationQueryService;
 import codesquad.airbnb.accommodation.web.dto.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @Slf4j
 @RestController
@@ -50,10 +54,14 @@ public class AccommodationController {
      * 숙소 목록(샘플로만 구현)
      */
     @GetMapping
-    public AccommodationListResponse accommodationList(@ModelAttribute AccommodationListRequest listRequest) {
-        //TODO : 요청에 대한 유효성 검사
-        //TODO : 조건에 부합하는 숙소 목록 가져오기
-        log.info("list Request = {}", listRequest);
-        return AccommodationListResponse.sampleApi(100);
+    public ResponseEntity accommodationList(@ModelAttribute @Valid AccommodationListRequest listRequest) {
+        log.info("listRequest = {}", listRequest);
+        AccommodationSearchCondition searchCondition = listRequest.toSearchCondition();
+        log.info("searchCondition = {}", searchCondition);
+
+        // List<Accommodation> accommodations = accommodationQueryService.findAccommodations(searchCondition);
+        // AccommodationListResponse.create(accommodations);
+
+        return ResponseEntity.ok(AccommodationListResponse.sampleApi(100));
     }
 }

@@ -1,5 +1,7 @@
 package codesquad.airbnb.accommodation.web.dto;
 
+import codesquad.airbnb.accommodation.domain.Accommodation;
+import codesquad.airbnb.review.domain.Review;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -88,4 +90,40 @@ public class AccommodationListElement {
                 .build();
     }
 
+    public static AccommodationListElement create(Accommodation accommodation) {
+            return AccommodationListElement.builder()
+                    .accommodationId(accommodation.getId())
+                    .accommodationName(accommodation.getName())
+                    .description(accommodation.getDescription())
+                    .limitGuestCount(accommodation.getLimitGuestCount())
+                    .pricePerDate(accommodation.getPricePerDate())
+                    .locationName(accommodation.getLocation().getLocationName())
+                    .latitude(accommodation.getLocation().getLatitude())
+                    .longitude(accommodation.getLocation().getLongitude())
+                    .roomCount(accommodation.getFacility().getRoomCount())
+                    .bedCount(accommodation.getFacility().getRoomCount())
+                    .bathRoomCount(accommodation.getFacility().getBathRoomCount())
+                    .hasKitchen(accommodation.getFacility().hasKitchen())
+                    .hasWifi(accommodation.getFacility().hasWifi())
+                    .hasAirConditioner(accommodation.getFacility().hasAirConditioner())
+                    .hasHairDrier(accommodation.getFacility().hasHairDrier())
+                    .mainImageUrl(RANDOM_IMAGE_SITE_URL)
+                    // 생각해보면 숙소 하나를 조회할 때 그 숙소의 리뷰에 관한 통계 정보도 가져와야한다.
+                    // 매번 모든 데이터를 가져올 때 리뷰들을 1:다로 조인해서 가져오기엔 너무 비싸다.
+                    // 별도의 Dto로 조회하는게 더 나을 것 같다는 생각이 들긴 드는데, 그러기엔 현재 미션의 시간이 부족하다...
+                    // 일단 랜덤으로 삽입.
+                    .reviewCount(accommodation.getReviews().size())
+                    // 사용자의 리뷰들에 관한 통계 정보도 사실...
+                    // 별도의 일급 컬렉션 값 타입으로 처리하거나 1:1 일급 컬렉션 엔티티로 정의해서 Reviews 객체 스스로 책임지는 것이 좀더 통계 정보 관리가 편할 것 같다.
+                    // 아니면 DB에서 집계함수를 통해 계산해서 통채로 계산해서 가져오거나.
+                    .gradeAverage(calculateGradeRange(accommodation))
+                    .build();
+        }
+
+    private static double calculateGradeRange(Accommodation accommodation) {
+        return accommodation.getReviews().stream()
+                .mapToInt(Review::getGrade)
+                .average()
+                .getAsDouble();
+    }
 }
