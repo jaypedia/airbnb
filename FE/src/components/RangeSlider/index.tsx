@@ -7,7 +7,7 @@ import { AirbnbSlider } from './AirbnbSlider.style';
 import searchBarData from '@/apis/searchBar';
 import AirbnbThumbComponent from '@/components/RangeSlider/AirbnbThumb';
 import * as S from '@/components/RangeSlider/RangeSlider.style';
-import dividePrices from '@/utils/rangeSlider';
+import getRangeSliderValues from '@/utils/rangeSlider';
 import updateData from '@/utils/updateData';
 
 const RangeSlider = () => {
@@ -17,12 +17,13 @@ const RangeSlider = () => {
   const minDistance = 10000;
   const [rangePrice, setRangePrice] = useState([100000, 800000]);
 
-  const result = priceData.prices ? dividePrices(priceData.prices) : null;
-  const rangePriceCntObj = priceData.prices ? result.rangeObj : {};
+  const result = priceData.prices ? getRangeSliderValues(priceData.prices) : null;
+  const rangePriceCntObj = priceData.prices ? result.graphBarCntObj : {};
   const resultArr = [];
   const rangeMin = priceData.prices ? result.rangeMin : null;
   const rangeMax = priceData.prices ? result.rangeMax : null;
   const rangeGap = priceData.prices ? result.rangeGap : null;
+  const rangeAvg = priceData.prices ? result.rangeAvg : 0;
 
   for (const key in rangePriceCntObj) {
     resultArr.push(rangePriceCntObj[key]);
@@ -30,9 +31,10 @@ const RangeSlider = () => {
 
   const graphBars = resultArr.map((el, idx) => {
     const isInRange =
-      idx * rangeGap + rangeMin >= rangePrice[0] && idx * rangeGap + rangeMin < rangePrice[1];
+      idx * rangeGap + rangeMin >= rangePrice[0] && idx * rangeGap + rangeMin <= rangePrice[1];
     return <S.GraphBar barHeight={el} isInRange={isInRange} key={idx} />;
   });
+
   const handleChange = (event, newRangePrice, activeThumb) => {
     if (!Array.isArray(newRangePrice)) {
       return;
@@ -49,13 +51,16 @@ const RangeSlider = () => {
     updateData(setPriceDataLoading, searchBarData.getRangePriceData, setPriceData);
   }, []);
 
-  console.log(graphBars);
-
   return (
-    <Box sx={{ width: 500, height: 200, margin: 5 }}>
-      <Typography variant="h6" component="span">
-        가격범위
-      </Typography>
+    <Box sx={{ width: '600px', height: '100%', margin: 7 }}>
+      <Stack>
+        <Typography variant="h6" component="span">
+          가격범위
+        </Typography>
+        <Typography variant="subtitle1" component="span" color="gray">
+          {`평균 1박 요금은 ₩${rangeAvg.toLocaleString()} 입니다.`}
+        </Typography>
+      </Stack>
       <S.GraphBox>{graphBars}</S.GraphBox>
       <AirbnbSlider
         max={rangeMax}

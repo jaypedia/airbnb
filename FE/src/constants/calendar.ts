@@ -1,17 +1,17 @@
-const MONTH_NAME = {
-  0: { kr: '1월', en: 'January' },
-  1: { kr: '2월', en: 'Fabruary' },
-  2: { kr: '3월', en: 'March' },
-  3: { kr: '4월', en: 'April' },
-  4: { kr: '5월', en: 'May' },
-  5: { kr: '6월', en: 'June' },
-  6: { kr: '7월', en: 'July' },
-  7: { kr: '8월', en: 'August' },
-  8: { kr: '9월', en: 'September' },
-  9: { kr: '10월', en: 'October' },
-  10: { kr: '11월', en: 'November' },
-  11: { kr: '12월', en: 'December' },
-};
+const MONTH_NAME = [
+  { kr: '1월', en: 'January' },
+  { kr: '2월', en: 'Fabruary' },
+  { kr: '3월', en: 'March' },
+  { kr: '4월', en: 'April' },
+  { kr: '5월', en: 'May' },
+  { kr: '6월', en: 'June' },
+  { kr: '7월', en: 'July' },
+  { kr: '8월', en: 'August' },
+  { kr: '9월', en: 'September' },
+  { kr: '10월', en: 'October' },
+  { kr: '11월', en: 'November' },
+  { kr: '12월', en: 'December' },
+];
 
 const DAY_NAME = [
   { id: 'Su', kr: '일', en: 'Su' },
@@ -25,4 +25,6 @@ const DAY_NAME = [
 
 const MONTH_WIDTH_PX = 390;
 
-export { MONTH_NAME, DAY_NAME, MONTH_WIDTH_PX };
+const TRANSITION_EFFECT = 'all 0.5s ease';
+
+export { MONTH_NAME, DAY_NAME, MONTH_WIDTH_PX, TRANSITION_EFFECT };
