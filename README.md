@@ -1,5 +1,10 @@
 # Airbnb Project
 
+## Main Features
+- Calendar
+- Search Bar
+- Price Slider
+
 ## 😀 Team members
 
 ### **Front-End**
